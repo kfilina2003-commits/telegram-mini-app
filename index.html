@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Эзотерические услуги</title>
-  <meta name="description" content="Энергодиагностика, разбор чакр, расклады, индивидуальные эзотерические консультации." />
+  <meta name="description" content="Энергодиагностика, разбор чакр, расклады и индивидуальные эзотерические консультации." />
   <style>
     * {
       box-sizing: border-box;
@@ -18,10 +18,10 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(124, 58, 237, 0.28), transparent 35%),
-        radial-gradient(circle at bottom, rgba(236, 72, 153, 0.18), transparent 30%),
-        linear-gradient(180deg, #0b0615 0%, #140a24 45%, #1a0d2f 100%);
-      color: #f6f0ff;
+        radial-gradient(circle at top left, rgba(206, 161, 225, 0.28), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(161, 175, 205, 0.22), transparent 30%),
+        linear-gradient(180deg, #807fad 0%, #a1afcd 55%, #d0d1e0 100%);
+      color: #2f2a38;
       line-height: 1.5;
     }
 
@@ -40,8 +40,8 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(9, 4, 20, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(208, 209, 224, 0.72);
+      border-bottom: 1px solid rgba(128, 127, 173, 0.22);
     }
 
     .header-inner {
@@ -56,13 +56,14 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.4px;
+      color: #5e5372;
     }
 
     .nav {
       display: flex;
       gap: 18px;
       font-size: 14px;
-      color: rgba(255,255,255,0.84);
+      color: #5f5d78;
     }
 
     .hero {
@@ -80,23 +81,24 @@
       display: inline-block;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: #eadcff;
+      background: rgba(255, 255, 255, 0.42);
+      color: #6f6183;
       font-size: 13px;
       margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(128, 127, 173, 0.18);
     }
 
     h1 {
       margin: 0 0 18px;
       font-size: clamp(34px, 6vw, 62px);
       line-height: 1.05;
+      color: #4b4358;
     }
 
     .hero p {
       margin: 0 0 28px;
       font-size: 18px;
-      color: rgba(255,255,255,0.82);
+      color: #5f5d78;
       max-width: 640px;
     }
 
@@ -118,9 +120,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      background: linear-gradient(135deg, #cea1e1 0%, #807fad 100%);
       color: white;
-      box-shadow: 0 12px 28px rgba(192, 132, 252, 0.25);
+      box-shadow: 0 12px 24px rgba(128, 127, 173, 0.22);
     }
 
     .btn-primary:hover {
@@ -128,9 +130,9 @@
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: #f5ebff;
+      border: 1px solid rgba(128, 127, 173, 0.18);
+      background: rgba(255,255,255,0.32);
+      color: #5f5d78;
     }
 
     .hero-card {
@@ -138,26 +140,26 @@
       min-height: 420px;
       border-radius: 28px;
       background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.16), transparent 25%),
-        radial-gradient(circle at 70% 35%, rgba(236,72,153,0.30), transparent 25%),
-        radial-gradient(circle at 40% 75%, rgba(168,85,247,0.35), transparent 30%),
-        rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.45), transparent 24%),
+        radial-gradient(circle at 70% 35%, rgba(206,161,225,0.34), transparent 25%),
+        radial-gradient(circle at 40% 75%, rgba(161,175,205,0.34), transparent 30%),
+        rgba(255,255,255,0.22);
+      border: 1px solid rgba(128, 127, 173, 0.18);
       overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      box-shadow: 0 18px 40px rgba(88, 84, 116, 0.14);
     }
 
     .orb {
       position: absolute;
       border-radius: 50%;
-      filter: blur(4px);
-      opacity: 0.9;
+      filter: blur(6px);
+      opacity: 0.85;
     }
 
     .orb-1 {
       width: 180px;
       height: 180px;
-      background: rgba(236,72,153,0.42);
+      background: rgba(206, 161, 225, 0.5);
       top: 24px;
       right: 36px;
     }
@@ -165,7 +167,7 @@
     .orb-2 {
       width: 220px;
       height: 220px;
-      background: rgba(168,85,247,0.36);
+      background: rgba(161, 175, 205, 0.42);
       bottom: 28px;
       left: 28px;
     }
@@ -173,7 +175,7 @@
     .orb-3 {
       width: 110px;
       height: 110px;
-      background: rgba(255,255,255,0.18);
+      background: rgba(183, 160, 190, 0.45);
       top: 150px;
       left: 70px;
     }
@@ -182,12 +184,12 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
-width: min(320px, calc(100% - 40px));
+transform: translate(-50%, -50%);
+      width: min(320px, calc(100% - 40px));
       padding: 22px;
       border-radius: 22px;
-      background: rgba(14, 7, 30, 0.7);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255, 255, 255, 0.42);
+      border: 1px solid rgba(128, 127, 173, 0.16);
       backdrop-filter: blur(18px);
       text-align: center;
     }
@@ -195,12 +197,13 @@ width: min(320px, calc(100% - 40px));
     .floating-card h3 {
       margin: 0 0 10px;
       font-size: 24px;
+      color: #534b65;
     }
 
     .floating-card p {
       margin: 0;
       font-size: 15px;
-      color: rgba(255,255,255,0.78);
+      color: #6a6881;
     }
 
     section {
@@ -210,10 +213,11 @@ width: min(320px, calc(100% - 40px));
     .section-title {
       font-size: 30px;
       margin: 0 0 18px;
+      color: #4f475d;
     }
 
     .section-text {
-      color: rgba(255,255,255,0.78);
+      color: #67657d;
       max-width: 760px;
       margin: 0 0 28px;
     }
@@ -227,18 +231,20 @@ width: min(320px, calc(100% - 40px));
     .card {
       padding: 24px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(128, 127, 173, 0.16);
+      box-shadow: 0 10px 26px rgba(100, 95, 133, 0.08);
     }
 
     .card h3 {
       margin: 0 0 10px;
       font-size: 21px;
+      color: #534b65;
     }
 
     .card p {
       margin: 0 0 18px;
-      color: rgba(255,255,255,0.78);
+      color: #66647b;
       font-size: 15px;
     }
 
@@ -246,12 +252,13 @@ width: min(320px, calc(100% - 40px));
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 16px;
+      color: #6b5d82;
     }
 
     .list {
       margin: 0 0 22px;
       padding-left: 18px;
-      color: rgba(255,255,255,0.82);
+      color: #5d5a73;
       font-size: 14px;
     }
 
@@ -262,36 +269,31 @@ width: min(320px, calc(100% - 40px));
     }
 
     .about-box,
-    .contact-box {
+    .contact-box,
+    .step {
       padding: 26px;
       border-radius: 24px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.34);
+      border: 1px solid rgba(128, 127, 173, 0.16);
+      box-shadow: 0 10px 26px rgba(100, 95, 133, 0.08);
     }
 
     .quote {
       font-size: 20px;
       line-height: 1.45;
-      color: #f3e8ff;
+      color: #4f475d;
       margin: 0 0 14px;
     }
 
     .small {
       font-size: 14px;
-      color: rgba(255,255,255,0.7);
+      color: #66647b;
     }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
-    }
-
-    .step {
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .step-number {
@@ -301,7 +303,8 @@ width: min(320px, calc(100% - 40px));
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      background: linear-gradient(135deg, #cea1e1 0%, #807fad 100%);
+      color: white;
       font-weight: 700;
       margin-bottom: 16px;
     }
@@ -322,13 +325,14 @@ width: min(320px, calc(100% - 40px));
       display: block;
       padding: 14px 16px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.3);
+      border: 1px solid rgba(128, 127, 173, 0.14);
+      color: #59566f;
     }
 
     .footer {
       padding: 34px 0 50px;
-      color: rgba(255,255,255,0.6);
+      color: #6e6a83;
       font-size: 14px;
       text-align: center;
     }
@@ -378,14 +382,14 @@ width: min(320px, calc(100% - 40px));
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="badge">Энергия • интуиция • трансформация</div>
-          <h1>Эзотерические услуги для тех, кто хочет ясности и внутренней опоры</h1>
+          <div class="badge">Энергия • интуиция • мягкая трансформация</div>
+          <h1>Эзотерические услуги для тех, кто хочет ясности, опоры и контакта с собой</h1>
           <p>
             Индивидуальные разборы, диагностика состояния, расклады и мягкое сопровождение
-            в вопросах отношений, предназначения, финансов и личной энергии.
+            в вопросах отношений, предназначения, денег и личной энергии.
           </p>
-          <div class="buttons">
-<a class="btn btn-primary" href="#contacts">Записаться</a>
+<div class="buttons">
+            <a class="btn btn-primary" href="#contacts">Записаться</a>
             <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
           </div>
         </div>
@@ -409,17 +413,17 @@ width: min(320px, calc(100% - 40px));
       <div class="container">
         <h2 class="section-title">Услуги</h2>
         <p class="section-text">
-          Ниже обычный пример наполнения. Цены, названия и тексты потом легко поменяешь под себя.
+          Здесь ты потом сможешь подставить свои реальные услуги, форматы и цены.
         </p>
 
         <div class="cards">
           <div class="card">
             <h3>Энергодиагностика</h3>
-            <p>Разбор текущего состояния, блоков, точек утечки энергии и сильных сторон.</p>
+            <p>Разбор текущего состояния, блоков, утечки энергии и сильных сторон.</p>
             <div class="price">2 500 ₽</div>
             <ul class="list">
               <li>диагностика состояния</li>
-              <li>разбор основных запросов</li>
+              <li>разбор ключевых запросов</li>
               <li>рекомендации после сессии</li>
             </ul>
             <a class="btn btn-primary" href="#contacts">Записаться</a>
@@ -427,7 +431,7 @@ width: min(320px, calc(100% - 40px));
 
           <div class="card">
             <h3>Разбор чакральной системы</h3>
-            <p>Глубокий анализ по энергиям, проявлению, внутренним блокам и способам проработки.</p>
+            <p>Глубокий анализ энергий, проявления, внутренних блоков и способов проработки.</p>
             <div class="price">3 500 ₽</div>
             <ul class="list">
               <li>разбор по центрам</li>
@@ -439,12 +443,12 @@ width: min(320px, calc(100% - 40px));
 
           <div class="card">
             <h3>Индивидуальный расклад</h3>
-            <p>Ответ на конкретный вопрос: отношения, работа, деньги, выбор пути, внутреннее состояние.</p>
+            <p>Ответ на конкретный вопрос: отношения, работа, деньги, выбор пути, состояние.</p>
             <div class="price">1 800 ₽</div>
             <ul class="list">
               <li>1 ключевой запрос</li>
               <li>подробная интерпретация</li>
-              <li>подсказки по следующему шагу</li>
+              <li>следующие шаги по ситуации</li>
             </ul>
             <a class="btn btn-primary" href="#contacts">Записаться</a>
           </div>
@@ -458,12 +462,11 @@ width: min(320px, calc(100% - 40px));
         <div class="about">
           <div class="about-box">
             <p class="quote">
-              Я работаю бережно, глубоко и без давления. Моя задача — не напугать, а помочь тебе
-              увидеть суть происходящего и вернуть контакт с собой.
+              Я работаю бережно, глубоко и без давления. Моя задача — помочь тебе увидеть суть происходящего,
+              вернуть контакт с собой и почувствовать внутреннюю ясность.
             </p>
             <p class="small">
-              Здесь можешь написать свой стиль работы, опыт, подход, через какие инструменты работаешь
-              и с какими запросами к тебе приходят чаще всего.
+              Здесь можешь написать про свой подход, опыт, инструменты и с какими запросами к тебе приходят чаще всего.
             </p>
           </div>
 
@@ -494,13 +497,13 @@ width: min(320px, calc(100% - 40px));
           <div class="step">
             <div class="step-number">2</div>
             <h3>Мы согласуем формат</h3>
-            <p class="small">Онлайн-разбор, голосовые сообщения, письменный формат или созвон.</p>
-</div>
+            <p class="small">Онлайн-разбор, голосовые, письменный формат или созвон.</p>
+          </div>
 
           <div class="step">
-            <div class="step-number">3</div>
+<div class="step-number">3</div>
             <h3>Ты получаешь разбор</h3>
-            <p class="small">С ясностью, акцентами по твоей ситуации и рекомендациями по дальнейшим шагам.</p>
+            <p class="small">С акцентами по ситуации и рекомендациями по дальнейшим шагам.</p>
           </div>
         </div>
       </div>
@@ -513,7 +516,7 @@ width: min(320px, calc(100% - 40px));
           <div class="contact-box">
             <h3>Связаться со мной</h3>
             <p class="small">
-              Вставь сюда свои реальные ссылки. Сейчас стоят заглушки.
+              Вставь сюда свои реальные ссылки.
             </p>
 
             <div class="contact-links">
