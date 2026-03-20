@@ -3,98 +3,549 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Моё Telegram-приложение</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <title>Эзотерические услуги</title>
+  <meta name="description" content="Энергодиагностика, разбор чакр, расклады, индивидуальные эзотерические консультации." />
   <style>
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      background:
+        radial-gradient(circle at top, rgba(124, 58, 237, 0.28), transparent 35%),
+        radial-gradient(circle at bottom, rgba(236, 72, 153, 0.18), transparent 30%),
+        linear-gradient(180deg, #0b0615 0%, #140a24 45%, #1a0d2f 100%);
+      color: #f6f0ff;
+      line-height: 1.5;
     }
 
-    .card {
-      width: 100%;
-      max-width: 420px;
-      background: #1e293b;
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(9, 4, 20, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #eadcff;
+      font-size: 13px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     h1 {
-      margin: 0 0 12px;
-      font-size: 28px;
+      margin: 0 0 18px;
+      font-size: clamp(34px, 6vw, 62px);
+      line-height: 1.05;
     }
 
-    p {
-      margin: 0 0 16px;
-      line-height: 1.5;
-      opacity: 0.95;
+    .hero p {
+      margin: 0 0 28px;
+      font-size: 18px;
+      color: rgba(255,255,255,0.82);
+      max-width: 640px;
     }
 
-    .button {
-      width: 100%;
-      border: none;
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
       border-radius: 14px;
-      padding: 14px;
-      font-size: 16px;
-      cursor: pointer;
-      background: #3b82f6;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
       color: white;
-      margin-top: 12px;
+      box-shadow: 0 12px 28px rgba(192, 132, 252, 0.25);
     }
 
-    .info {
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.06);
+    .btn-primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #f5ebff;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 420px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.16), transparent 25%),
+        radial-gradient(circle at 70% 35%, rgba(236,72,153,0.30), transparent 25%),
+        radial-gradient(circle at 40% 75%, rgba(168,85,247,0.35), transparent 30%),
+        rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(4px);
+      opacity: 0.9;
+    }
+
+    .orb-1 {
+      width: 180px;
+      height: 180px;
+      background: rgba(236,72,153,0.42);
+      top: 24px;
+      right: 36px;
+    }
+
+    .orb-2 {
+      width: 220px;
+      height: 220px;
+      background: rgba(168,85,247,0.36);
+      bottom: 28px;
+      left: 28px;
+    }
+
+    .orb-3 {
+      width: 110px;
+      height: 110px;
+      background: rgba(255,255,255,0.18);
+      top: 150px;
+      left: 70px;
+    }
+
+    .floating-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+width: min(320px, calc(100% - 40px));
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(14, 7, 30, 0.7);
+      border: 1px solid rgba(255,255,255,0.09);
+      backdrop-filter: blur(18px);
+      text-align: center;
+    }
+
+    .floating-card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .floating-card p {
+      margin: 0;
+      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    section {
+      padding: 34px 0;
+    }
+
+    .section-title {
+      font-size: 30px;
+      margin: 0 0 18px;
+    }
+
+    .section-text {
+      color: rgba(255,255,255,0.78);
+      max-width: 760px;
+      margin: 0 0 28px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.78);
+      font-size: 15px;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .list {
+      margin: 0 0 22px;
+      padding-left: 18px;
+      color: rgba(255,255,255,0.82);
       font-size: 14px;
-      line-height: 1.5;
-      word-break: break-word;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 20px;
+    }
+
+    .about-box,
+    .contact-box {
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .quote {
+      font-size: 20px;
+      line-height: 1.45;
+      color: #f3e8ff;
+      margin: 0 0 14px;
+    }
+
+    .small {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .contacts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-link {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer {
+      padding: 34px 0 50px;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .cards,
+      .about,
+      .steps,
+      .contacts {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      h1 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Привет ✨</h1>
-    <p>Это мой первый Telegram Mini App.</p>
 
-    <button class="button" onclick="showMessage()">Нажми на меня</button>
-
-    <div class="info" id="info">
-      Открой это приложение внутри Telegram, чтобы увидеть данные пользователя.
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">Mystic Space</div>
+      <nav class="nav">
+        <a href="#services">Услуги</a>
+        <a href="#about">Обо мне</a>
+        <a href="#steps">Как проходит</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.expand();
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Энергия • интуиция • трансформация</div>
+          <h1>Эзотерические услуги для тех, кто хочет ясности и внутренней опоры</h1>
+          <p>
+            Индивидуальные разборы, диагностика состояния, расклады и мягкое сопровождение
+            в вопросах отношений, предназначения, финансов и личной энергии.
+          </p>
+          <div class="buttons">
+<a class="btn btn-primary" href="#contacts">Записаться</a>
+            <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
+          </div>
+        </div>
 
-    const info = document.getElementById("info");
-    const user = tg.initDataUnsafe?.user;
+        <div class="hero-card">
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="orb orb-3"></div>
+          <div class="floating-card">
+            <h3>Твоя точка перезапуска</h3>
+            <p>
+              Пространство, где можно услышать себя, увидеть скрытые причины происходящего
+              и наметить следующий шаг.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    if (user) {
-      info.innerHTML = `
-        <b>Пользователь:</b> ${user.first_name  ""} ${user.last_name  ""}<br>
-        <b>Username:</b> ${user.username || "нет"}<br>
-        <b>ID:</b> ${user.id}
-      `;
-    }
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Услуги</h2>
+        <p class="section-text">
+          Ниже обычный пример наполнения. Цены, названия и тексты потом легко поменяешь под себя.
+        </p>
 
-    function showMessage() {
-      alert("Шаблон работает");
-    }
-  </script>
+        <div class="cards">
+          <div class="card">
+            <h3>Энергодиагностика</h3>
+            <p>Разбор текущего состояния, блоков, точек утечки энергии и сильных сторон.</p>
+            <div class="price">2 500 ₽</div>
+            <ul class="list">
+              <li>диагностика состояния</li>
+              <li>разбор основных запросов</li>
+              <li>рекомендации после сессии</li>
+            </ul>
+            <a class="btn btn-primary" href="#contacts">Записаться</a>
+          </div>
+
+          <div class="card">
+            <h3>Разбор чакральной системы</h3>
+            <p>Глубокий анализ по энергиям, проявлению, внутренним блокам и способам проработки.</p>
+            <div class="price">3 500 ₽</div>
+            <ul class="list">
+              <li>разбор по центрам</li>
+              <li>сильные и слабые зоны</li>
+              <li>письменные рекомендации</li>
+            </ul>
+            <a class="btn btn-primary" href="#contacts">Записаться</a>
+          </div>
+
+          <div class="card">
+            <h3>Индивидуальный расклад</h3>
+            <p>Ответ на конкретный вопрос: отношения, работа, деньги, выбор пути, внутреннее состояние.</p>
+            <div class="price">1 800 ₽</div>
+            <ul class="list">
+              <li>1 ключевой запрос</li>
+              <li>подробная интерпретация</li>
+              <li>подсказки по следующему шагу</li>
+            </ul>
+            <a class="btn btn-primary" href="#contacts">Записаться</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Обо мне</h2>
+        <div class="about">
+          <div class="about-box">
+            <p class="quote">
+              Я работаю бережно, глубоко и без давления. Моя задача — не напугать, а помочь тебе
+              увидеть суть происходящего и вернуть контакт с собой.
+            </p>
+            <p class="small">
+              Здесь можешь написать свой стиль работы, опыт, подход, через какие инструменты работаешь
+              и с какими запросами к тебе приходят чаще всего.
+            </p>
+          </div>
+
+          <div class="about-box">
+            <h3>С чем можно прийти</h3>
+            <ul class="list">
+              <li>отношения и повторяющиеся сценарии</li>
+              <li>усталость, потеря ресурса, непонимание себя</li>
+              <li>поиск предназначения и направления</li>
+              <li>вопросы финансового потока</li>
+              <li>состояние перед важным выбором</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps">
+      <div class="container">
+        <h2 class="section-title">Как проходит работа</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Ты пишешь мне</h3>
+            <p class="small">Кратко описываешь запрос и выбираешь подходящую услугу.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Мы согласуем формат</h3>
+            <p class="small">Онлайн-разбор, голосовые сообщения, письменный формат или созвон.</p>
+</div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Ты получаешь разбор</h3>
+            <p class="small">С ясностью, акцентами по твоей ситуации и рекомендациями по дальнейшим шагам.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="container">
+        <h2 class="section-title">Запись и контакты</h2>
+        <div class="contacts">
+          <div class="contact-box">
+            <h3>Связаться со мной</h3>
+            <p class="small">
+              Вставь сюда свои реальные ссылки. Сейчас стоят заглушки.
+            </p>
+
+            <div class="contact-links">
+              <a class="contact-link" href="https://t.me/your_username" target="_blank">Telegram: @your_username</a>
+              <a class="contact-link" href="https://instagram.com/your_username" target="_blank">Instagram: @your_username</a>
+              <a class="contact-link" href="mailto:yourmail@example.com">Email: yourmail@example.com</a>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <h3>Формат записи</h3>
+            <p class="small">
+              Напиши мне в Telegram:
+              <br><br>
+              — какую услугу хочешь<br>
+              — с каким запросом приходишь<br>
+              — в каком формате тебе удобно получить разбор
+            </p>
+            <div style="margin-top: 20px;">
+              <a class="btn btn-primary" href="https://t.me/your_username" target="_blank">Написать в Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Mystic Space. Все права защищены.
+    </div>
+  </footer>
+
 </body>
 </html>
