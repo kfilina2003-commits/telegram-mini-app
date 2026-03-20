@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Моё Telegram-приложение</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 420px;
+      background: #1e293b;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: 28px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.5;
+      opacity: 0.95;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      background: #3b82f6;
+      color: white;
+      margin-top: 12px;
+    }
+
+    .info {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      font-size: 14px;
+      line-height: 1.5;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Привет ✨</h1>
+    <p>Это мой первый Telegram Mini App.</p>
+
+    <button class="button" onclick="showMessage()">Нажми на меня</button>
+
+    <div class="info" id="info">
+      Открой это приложение внутри Telegram, чтобы увидеть данные пользователя.
+    </div>
+  </div>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    const info = document.getElementById("info");
+    const user = tg.initDataUnsafe?.user;
+
+    if (user) {
+      info.innerHTML = `
+        <b>Пользователь:</b> ${user.first_name  ""} ${user.last_name  ""}<br>
+        <b>Username:</b> ${user.username || "нет"}<br>
+        <b>ID:</b> ${user.id}
+      `;
+    }
+
+    function showMessage() {
+      alert("Шаблон работает");
+    }
+  </script>
+</body>
+</html>
