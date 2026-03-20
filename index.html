@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Эзотерические услуги</title>
+  <title>Энергодиагностика | Эзотерические услуги</title>
   <meta name="description" content="Энергодиагностика, разбор чакр, расклады и индивидуальные эзотерические консультации." />
   <style>
     * {
@@ -18,11 +18,12 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(206, 161, 225, 0.28), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(161, 175, 205, 0.22), transparent 30%),
-        linear-gradient(180deg, #807fad 0%, #a1afcd 55%, #d0d1e0 100%);
-      color: #2f2a38;
+        radial-gradient(circle at top, rgba(124, 58, 237, 0.28), transparent 35%),
+        radial-gradient(circle at bottom, rgba(236, 72, 153, 0.18), transparent 30%),
+        linear-gradient(180deg, #0b0615 0%, #140a24 45%, #1a0d2f 100%);
+      color: #f6f0ff;
       line-height: 1.5;
+      overflow-x: hidden;
     }
 
     a {
@@ -40,8 +41,8 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(14px);
-      background: rgba(208, 209, 224, 0.72);
-      border-bottom: 1px solid rgba(128, 127, 173, 0.22);
+      background: rgba(9, 4, 20, 0.72);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .header-inner {
@@ -56,63 +57,82 @@
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 0.4px;
-      color: #5e5372;
     }
 
     .nav {
       display: flex;
       gap: 18px;
       font-size: 14px;
-      color: #5f5d78;
+      color: rgba(255,255,255,0.84);
     }
 
     .hero {
-      padding: 90px 0 60px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 0 50px;
+      overflow: hidden;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.08), transparent 12%),
+        radial-gradient(circle at 50% 42%, rgba(192,132,252,0.14), transparent 26%),
+        radial-gradient(circle at 50% 45%, rgba(236,72,153,0.10), transparent 34%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 920px;
+      margin: 0 auto;
     }
 
     .badge {
       display: inline-block;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.42);
-      color: #6f6183;
+      background: rgba(255,255,255,0.08);
+      color: #eadcff;
       font-size: 13px;
       margin-bottom: 18px;
-      border: 1px solid rgba(128, 127, 173, 0.18);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: clamp(34px, 6vw, 62px);
-      line-height: 1.05;
-      color: #4b4358;
+      margin: 26px 0 18px;
+      font-size: clamp(36px, 6vw, 68px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
     }
 
     .hero p {
-      margin: 0 0 28px;
-      font-size: 18px;
-      color: #5f5d78;
-      max-width: 640px;
+      margin: 0 auto 28px;
+      font-size: 19px;
+      color: rgba(255,255,255,0.82);
+      max-width: 760px;
     }
 
     .buttons {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 14px;
+      margin-bottom: 34px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 50px;
+      min-height: 52px;
       padding: 0 22px;
       border-radius: 14px;
       font-weight: 700;
@@ -120,9 +140,9 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #cea1e1 0%, #807fad 100%);
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
       color: white;
-      box-shadow: 0 12px 24px rgba(128, 127, 173, 0.22);
+      box-shadow: 0 12px 28px rgba(192, 132, 252, 0.25);
     }
 
     .btn-primary:hover {
@@ -130,80 +150,209 @@
     }
 
     .btn-secondary {
-      border: 1px solid rgba(128, 127, 173, 0.18);
-      background: rgba(255,255,255,0.32);
-      color: #5f5d78;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #f5ebff;
     }
 
-    .hero-card {
+    .hero-visual {
       position: relative;
-      min-height: 420px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.45), transparent 24%),
-        radial-gradient(circle at 70% 35%, rgba(206,161,225,0.34), transparent 25%),
-        radial-gradient(circle at 40% 75%, rgba(161,175,205,0.34), transparent 30%),
-        rgba(255,255,255,0.22);
-      border: 1px solid rgba(128, 127, 173, 0.18);
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(88, 84, 116, 0.14);
+      width: 100%;
+      max-width: 520px;
+      height: 500px;
+      margin: 0 auto 10px;
     }
 
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(6px);
-      opacity: 0.85;
-    }
-
-    .orb-1 {
-      width: 180px;
-      height: 180px;
-      background: rgba(206, 161, 225, 0.5);
-      top: 24px;
-      right: 36px;
-    }
-
-    .orb-2 {
-      width: 220px;
-      height: 220px;
-      background: rgba(161, 175, 205, 0.42);
-      bottom: 28px;
-      left: 28px;
-    }
-
-    .orb-3 {
-      width: 110px;
-      height: 110px;
-      background: rgba(183, 160, 190, 0.45);
-      top: 150px;
-      left: 70px;
-    }
-
-    .floating-card {
+    .energy-aura {
       position: absolute;
       left: 50%;
       top: 50%;
-transform: translate(-50%, -50%);
-      width: min(320px, calc(100% - 40px));
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.42);
-      border: 1px solid rgba(128, 127, 173, 0.16);
-      backdrop-filter: blur(18px);
-      text-align: center;
+      transform: translate(-50%, -52%);
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(192,132,252,0.22) 18%, rgba(236,72,153,0.12) 36%, rgba(192,132,252,0.06) 52%, transparent 72%);
+filter: blur(8px);
+      animation: pulseAura 4s ease-in-out infinite;
     }
 
-    .floating-card h3 {
-      margin: 0 0 10px;
-      font-size: 24px;
-      color: #534b65;
+    .energy-ring,
+    .energy-ring-2,
+    .energy-ring-3 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      transform: translate(-50%, -52%);
+      animation: rotateRing 18s linear infinite;
     }
 
-    .floating-card p {
-      margin: 0;
+    .energy-ring {
+      width: 300px;
+      height: 300px;
+      box-shadow: 0 0 30px rgba(192,132,252,0.16), inset 0 0 26px rgba(192,132,252,0.08);
+    }
+
+    .energy-ring-2 {
+      width: 390px;
+      height: 390px;
+      border-color: rgba(236,72,153,0.12);
+      animation-duration: 26s;
+      animation-direction: reverse;
+    }
+
+    .energy-ring-3 {
+      width: 470px;
+      height: 470px;
+      border-color: rgba(255,255,255,0.06);
+      animation-duration: 34s;
+    }
+
+    .sparkles span {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 16px rgba(255,255,255,0.8), 0 0 30px rgba(192,132,252,0.5);
+      animation: twinkle 2.8s infinite ease-in-out;
+    }
+
+    .sparkles span:nth-child(1) { top: 70px; left: 210px; animation-delay: 0s; }
+    .sparkles span:nth-child(2) { top: 110px; right: 120px; animation-delay: .6s; }
+    .sparkles span:nth-child(3) { top: 180px; left: 95px; animation-delay: 1.2s; }
+    .sparkles span:nth-child(4) { top: 240px; right: 85px; animation-delay: .9s; }
+    .sparkles span:nth-child(5) { bottom: 120px; left: 140px; animation-delay: 1.6s; }
+    .sparkles span:nth-child(6) { bottom: 90px; right: 165px; animation-delay: .3s; }
+    .sparkles span:nth-child(7) { top: 135px; left: 50%; animation-delay: 1.9s; }
+    .sparkles span:nth-child(8) { bottom: 155px; left: 50px; animation-delay: .8s; }
+
+    .silhouette-wrap {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 220px;
+      height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 28px rgba(192,132,252,0.35));
+    }
+
+    .silhouette-glow {
+      position: absolute;
+      width: 180px;
+      height: 300px;
+      border-radius: 90px;
+      background: radial-gradient(circle at center, rgba(192,132,252,0.22), rgba(236,72,153,0.08), transparent 72%);
+      filter: blur(14px);
+      animation: bodyGlow 3.2s ease-in-out infinite;
+    }
+
+    .silhouette {
+      position: relative;
+      width: 150px;
+      height: 320px;
+    }
+
+    .head {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(228,210,255,0.88));
+      box-shadow: 0 0 18px rgba(255,255,255,0.45);
+    }
+
+    .body-shape {
+      position: absolute;
+      left: 50%;
+      top: 42px;
+      transform: translateX(-50%);
+      width: 112px;
+      height: 220px;
+      background: linear-gradient(180deg, rgba(250,244,255,0.96), rgba(214,189,255,0.9) 42%, rgba(188,140,252,0.82) 72%, rgba(236,72,153,0.72) 100%);
+      clip-path: polygon(50% 0%, 72% 8%, 84% 24%, 88% 42%, 100% 78%, 79% 90%, 68% 100%, 32% 100%, 21% 90%, 0% 78%, 12% 42%, 16% 24%, 28% 8%);
+      box-shadow: 0 0 28px rgba(192,132,252,0.35);
+    }
+
+    .arm-left,
+    .arm-right,
+    .leg-left,
+    .leg-right {
+      position: absolute;
+      background: linear-gradient(180deg, rgba(245,235,255,0.92), rgba(200,154,255,0.78));
+      border-radius: 999px;
+      box-shadow: 0 0 16px rgba(192,132,252,0.22);
+    }
+
+    .arm-left {
+      width: 20px;
+      height: 115px;
+      left: 12px;
+      top: 88px;
+      transform: rotate(30deg);
+    }
+
+    .arm-right {
+      width: 20px;
+      height: 115px;
+      right: 12px;
+      top: 88px;
+      transform: rotate(-30deg);
+    }
+
+    .leg-left {
+      width: 22px;
+      height: 110px;
+      left: 44px;
+      bottom: 0;
+      transform: rotate(8deg);
+    }
+
+    .leg-right {
+      width: 22px;
+      height: 110px;
+      right: 44px;
+      bottom: 0;
+transform: rotate(-8deg);
+    }
+
+    .chakra {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      box-shadow: 0 0 16px currentColor, 0 0 36px currentColor;
+      animation: chakraPulse 2.4s ease-in-out infinite;
+    }
+
+    .c1 { top: 74px; color: #c084fc; animation-delay: 0s; }
+    .c2 { top: 103px; color: #ec4899; animation-delay: .2s; }
+    .c3 { top: 135px; color: #f59e0b; animation-delay: .4s; }
+    .c4 { top: 166px; color: #22c55e; animation-delay: .6s; }
+    .c5 { top: 197px; color: #38bdf8; animation-delay: .8s; }
+    .c6 { top: 229px; color: #818cf8; animation-delay: 1s; }
+    .c7 { top: 22px; color: #ffffff; animation-delay: 1.2s; }
+
+    .hero-note {
+      max-width: 760px;
+      margin: 18px auto 0;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.82);
+      backdrop-filter: blur(12px);
       font-size: 15px;
-      color: #6a6881;
     }
 
     section {
@@ -213,11 +362,10 @@ transform: translate(-50%, -50%);
     .section-title {
       font-size: 30px;
       margin: 0 0 18px;
-      color: #4f475d;
     }
 
     .section-text {
-      color: #67657d;
+      color: rgba(255,255,255,0.78);
       max-width: 760px;
       margin: 0 0 28px;
     }
@@ -231,20 +379,18 @@ transform: translate(-50%, -50%);
     .card {
       padding: 24px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.34);
-      border: 1px solid rgba(128, 127, 173, 0.16);
-      box-shadow: 0 10px 26px rgba(100, 95, 133, 0.08);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .card h3 {
       margin: 0 0 10px;
       font-size: 21px;
-      color: #534b65;
     }
 
     .card p {
       margin: 0 0 18px;
-      color: #66647b;
+      color: rgba(255,255,255,0.78);
       font-size: 15px;
     }
 
@@ -252,13 +398,12 @@ transform: translate(-50%, -50%);
       font-size: 24px;
       font-weight: 700;
       margin-bottom: 16px;
-      color: #6b5d82;
     }
 
     .list {
       margin: 0 0 22px;
       padding-left: 18px;
-      color: #5d5a73;
+      color: rgba(255,255,255,0.82);
       font-size: 14px;
     }
 
@@ -269,31 +414,36 @@ transform: translate(-50%, -50%);
     }
 
     .about-box,
-    .contact-box,
-    .step {
+    .contact-box {
       padding: 26px;
       border-radius: 24px;
-      background: rgba(255,255,255,0.34);
-      border: 1px solid rgba(128, 127, 173, 0.16);
-      box-shadow: 0 10px 26px rgba(100, 95, 133, 0.08);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .quote {
       font-size: 20px;
       line-height: 1.45;
-      color: #4f475d;
+      color: #f3e8ff;
       margin: 0 0 14px;
     }
 
     .small {
       font-size: 14px;
-      color: #66647b;
+      color: rgba(255,255,255,0.7);
     }
 
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
+    }
+
+    .step {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .step-number {
@@ -303,8 +453,7 @@ transform: translate(-50%, -50%);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #cea1e1 0%, #807fad 100%);
-      color: white;
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
       font-weight: 700;
       margin-bottom: 16px;
     }
@@ -325,20 +474,70 @@ transform: translate(-50%, -50%);
       display: block;
       padding: 14px 16px;
       border-radius: 14px;
-      background: rgba(255,255,255,0.3);
-      border: 1px solid rgba(128, 127, 173, 0.14);
-      color: #59566f;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .footer {
       padding: 34px 0 50px;
-      color: #6e6a83;
+      color: rgba(255,255,255,0.6);
       font-size: 14px;
       text-align: center;
     }
 
+    @keyframes pulseAura {
+      0%, 100% {
+        transform: translate(-50%, -52%) scale(0.96);
+        opacity: 0.85;
+      }
+      50% {
+        transform: translate(-50%, -52%) scale(1.08);
+        opacity: 1;
+      }
+    }
+
+    @keyframes bodyGlow {
+      0%, 100% {
+        transform: scale(0.96);
+        opacity: 0.72;
+      }
+      50% {
+        transform: scale(1.08);
+        opacity: 1;
+      }
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.25;
+        transform: scale(0.6);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.25);
+      }
+    }
+@keyframes chakraPulse {
+      0%, 100% {
+        transform: translateX(-50%) scale(0.82);
+        opacity: 0.7;
+      }
+      50% {
+        transform: translateX(-50%) scale(1.25);
+        opacity: 1;
+      }
+    }
+
+    @keyframes rotateRing {
+      from {
+        transform: translate(-50%, -52%) rotate(0deg);
+      }
+      to {
+        transform: translate(-50%, -52%) rotate(360deg);
+      }
+    }
+
     @media (max-width: 900px) {
-      .hero-grid,
       .cards,
       .about,
       .steps,
@@ -351,15 +550,56 @@ transform: translate(-50%, -50%);
       }
 
       .hero {
-        padding-top: 60px;
+        padding-top: 54px;
       }
 
       h1 {
-        font-size: 40px;
+        font-size: 42px;
       }
 
       .hero p {
         font-size: 16px;
+      }
+
+      .hero-visual {
+        height: 420px;
+      }
+
+      .energy-ring-3 {
+        width: 400px;
+        height: 400px;
+      }
+
+      .energy-ring-2 {
+        width: 330px;
+        height: 330px;
+      }
+
+      .energy-ring {
+        width: 260px;
+        height: 260px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-visual {
+        height: 360px;
+      }
+
+      .silhouette-wrap {
+        transform: translate(-50%, -50%) scale(0.85);
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
       }
     }
   </style>
@@ -380,31 +620,55 @@ transform: translate(-50%, -50%);
 
   <main>
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <div class="badge">Энергия • интуиция • мягкая трансформация</div>
-          <h1>Эзотерические услуги для тех, кто хочет ясности, опоры и контакта с собой</h1>
-          <p>
-            Индивидуальные разборы, диагностика состояния, расклады и мягкое сопровождение
-            в вопросах отношений, предназначения, денег и личной энергии.
-          </p>
-<div class="buttons">
-            <a class="btn btn-primary" href="#contacts">Записаться</a>
-            <a class="btn btn-secondary" href="#services">Посмотреть услуги</a>
+      <div class="container hero-content">
+        <div class="badge">Энергия • интуиция • диагностика состояния</div>
+
+        <div class="hero-visual">
+          <div class="energy-aura"></div>
+          <div class="energy-ring"></div>
+          <div class="energy-ring-2"></div>
+          <div class="energy-ring-3"></div>
+
+          <div class="sparkles">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </div>
+
+          <div class="silhouette-wrap">
+            <div class="silhouette-glow"></div>
+            <div class="silhouette">
+              <div class="head"></div>
+              <div class="body-shape"></div>
+              <div class="arm-left"></div>
+              <div class="arm-right"></div>
+              <div class="leg-left"></div>
+              <div class="leg-right"></div>
+
+              <div class="chakra c1"></div>
+              <div class="chakra c2"></div>
+              <div class="chakra c3"></div>
+              <div class="chakra c4"></div>
+              <div class="chakra c5"></div>
+              <div class="chakra c6"></div>
+              <div class="chakra c7"></div>
+            </div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <div class="orb orb-1"></div>
-          <div class="orb orb-2"></div>
-          <div class="orb orb-3"></div>
-          <div class="floating-card">
-            <h3>Твоя точка перезапуска</h3>
-            <p>
-              Пространство, где можно услышать себя, увидеть скрытые причины происходящего
-              и наметить следующий шаг.
-            </p>
-          </div>
+        <h1>Энергодиагностика, которая помогает увидеть твое состояние глубже обычных слов</h1>
+        <p>
+          Мягко считываю твой энергетический фон, точки утечки ресурса, внутренние блоки,
+          сильные стороны и ключевые причины того, что сейчас происходит в жизни.
+        </p>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="#contacts">Записаться на диагностику</a>
+          <a class="btn btn-secondary" href="#services">Посмотреть форматы</a>
+        </div>
+
+        <div class="hero-note">
+          Энергодиагностика — мой основной продукт. Это не просто красивое описание состояния, а разбор,
+          после которого становится понятнее, где ты сейчас, что тебя ослабляет и в какую сторону идти дальше.
         </div>
       </div>
     </section>
@@ -413,42 +677,43 @@ transform: translate(-50%, -50%);
       <div class="container">
         <h2 class="section-title">Услуги</h2>
         <p class="section-text">
-          Здесь ты потом сможешь подставить свои реальные услуги, форматы и цены.
+          Главный акцент — на энергодиагностике. Остальные форматы можно оставить как дополнительные.
         </p>
 
         <div class="cards">
-          <div class="card">
+<div class="card">
             <h3>Энергодиагностика</h3>
-            <p>Разбор текущего состояния, блоков, утечки энергии и сильных сторон.</p>
+            <p>Главный продукт: глубокий разбор состояния, утечки энергии, внутренних блоков и ресурса.</p>
             <div class="price">2 500 ₽</div>
             <ul class="list">
-              <li>диагностика состояния</li>
-              <li>разбор ключевых запросов</li>
-              <li>рекомендации после сессии</li>
+              <li>анализ текущего состояния</li>
+              <li>считывание слабых и сильных зон</li>
+              <li>понимание причин происходящего</li>
+              <li>рекомендации по дальнейшим шагам</li>
             </ul>
             <a class="btn btn-primary" href="#contacts">Записаться</a>
           </div>
 
           <div class="card">
             <h3>Разбор чакральной системы</h3>
-            <p>Глубокий анализ энергий, проявления, внутренних блоков и способов проработки.</p>
+            <p>Подробный разбор энергетических центров, эмоциональных блоков и проявления в жизни.</p>
             <div class="price">3 500 ₽</div>
             <ul class="list">
               <li>разбор по центрам</li>
-              <li>сильные и слабые зоны</li>
-              <li>письменные рекомендации</li>
+              <li>эмоциональные и телесные сигналы</li>
+              <li>зоны напряжения и потенциала</li>
             </ul>
             <a class="btn btn-primary" href="#contacts">Записаться</a>
           </div>
 
           <div class="card">
             <h3>Индивидуальный расклад</h3>
-            <p>Ответ на конкретный вопрос: отношения, работа, деньги, выбор пути, состояние.</p>
+            <p>Точечный формат под конкретный вопрос: отношения, деньги, выбор, состояние, путь.</p>
             <div class="price">1 800 ₽</div>
             <ul class="list">
               <li>1 ключевой запрос</li>
               <li>подробная интерпретация</li>
-              <li>следующие шаги по ситуации</li>
+              <li>подсказка по следующему шагу</li>
             </ul>
             <a class="btn btn-primary" href="#contacts">Записаться</a>
           </div>
@@ -462,22 +727,22 @@ transform: translate(-50%, -50%);
         <div class="about">
           <div class="about-box">
             <p class="quote">
-              Я работаю бережно, глубоко и без давления. Моя задача — помочь тебе увидеть суть происходящего,
-              вернуть контакт с собой и почувствовать внутреннюю ясность.
+              Я работаю бережно и глубоко. Моя задача — помочь тебе не просто услышать красивый текст,
+              а почувствовать ясность, увидеть корень состояния и вернуть контакт с собой.
             </p>
             <p class="small">
-              Здесь можешь написать про свой подход, опыт, инструменты и с какими запросами к тебе приходят чаще всего.
+              Здесь потом напишешь про свой подход, опыт, инструменты и с какими запросами к тебе приходят чаще всего.
             </p>
           </div>
 
           <div class="about-box">
             <h3>С чем можно прийти</h3>
             <ul class="list">
+              <li>усталость и потеря ресурса</li>
+              <li>ощущение внутреннего застоя</li>
               <li>отношения и повторяющиеся сценарии</li>
-              <li>усталость, потеря ресурса, непонимание себя</li>
-              <li>поиск предназначения и направления</li>
-              <li>вопросы финансового потока</li>
-              <li>состояние перед важным выбором</li>
+              <li>непонимание своего пути</li>
+              <li>финансовые блоки и тревога</li>
             </ul>
           </div>
         </div>
@@ -491,19 +756,19 @@ transform: translate(-50%, -50%);
           <div class="step">
             <div class="step-number">1</div>
             <h3>Ты пишешь мне</h3>
-            <p class="small">Кратко описываешь запрос и выбираешь подходящую услугу.</p>
+            <p class="small">Кратко описываешь свой запрос и выбираешь подходящий формат.</p>
           </div>
 
           <div class="step">
             <div class="step-number">2</div>
-            <h3>Мы согласуем формат</h3>
-            <p class="small">Онлайн-разбор, голосовые, письменный формат или созвон.</p>
+            <h3>Я провожу диагностику</h3>
+            <p class="small">Считываю общее состояние, перекосы, внутреннее напряжение и точки ресурса.</p>
           </div>
 
           <div class="step">
-<div class="step-number">3</div>
+            <div class="step-number">3</div>
             <h3>Ты получаешь разбор</h3>
-            <p class="small">С акцентами по ситуации и рекомендациями по дальнейшим шагам.</p>
+            <p class="small">С ясностью по твоей ситуации, акцентами и рекомендациями по следующему шагу.</p>
           </div>
         </div>
       </div>
@@ -521,18 +786,19 @@ transform: translate(-50%, -50%);
 
             <div class="contact-links">
               <a class="contact-link" href="https://t.me/your_username" target="_blank">Telegram: @your_username</a>
-              <a class="contact-link" href="https://instagram.com/your_username" target="_blank">Instagram: @your_username</a>
+              <a class="contact-link" href="https://instagram.
+com/your_username" target="_blank">Instagram: @your_username</a>
               <a class="contact-link" href="mailto:yourmail@example.com">Email: yourmail@example.com</a>
             </div>
           </div>
 
           <div class="contact-box">
-            <h3>Формат записи</h3>
+            <h3>Как записаться</h3>
             <p class="small">
               Напиши мне в Telegram:
               <br><br>
-              — какую услугу хочешь<br>
-              — с каким запросом приходишь<br>
+              — что хочешь пройти энергодиагностику<br>
+              — с каким состоянием или запросом приходишь<br>
               — в каком формате тебе удобно получить разбор
             </p>
             <div style="margin-top: 20px;">
