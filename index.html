@@ -50,34 +50,13 @@
         linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-main) 54%, #cdd0e2 100%);
     }
 
-    .bg-glow, .bg-shimmer {
-      position: absolute; inset: -12%; pointer-events: none;
-    }
-
     .bg-glow {
+      position: absolute; inset: -12%; pointer-events: none;
       background:
         radial-gradient(circle at 50% 48%, rgba(255,255,255,0.55), transparent 14%),
         radial-gradient(circle at 52% 44%, rgba(206, 161, 225, 0.22), transparent 18%),
         radial-gradient(circle at 44% 54%, rgba(161, 175, 205, 0.18), transparent 20%);
       filter: blur(56px); animation: bgBreath 13s ease-in-out infinite; will-change: transform, opacity;
-    }
-
-    .bg-shimmer {
-      background:
-        linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.30) 46%, transparent 54%),
-        linear-gradient(295deg, transparent 0%, rgba(255,255,255,0.14) 46%, transparent 54%);
-      opacity: 0.72; animation: shimmerField 20s linear infinite; will-change: transform;
-    }
-
-    .grain {
-      position: absolute; inset: 0; z-index: 1; opacity: 0.04; pointer-events: none;
-      background-image:
-        radial-gradient(circle at 10% 20%, rgba(63,57,86,.6) 0 0.65px, transparent 1px),
-        radial-gradient(circle at 70% 40%, rgba(63,57,86,.38) 0 0.65px, transparent 1px),
-        radial-gradient(circle at 30% 70%, rgba(63,57,86,.38) 0 0.65px, transparent 1px),
-        radial-gradient(circle at 90% 80%, rgba(63,57,86,.28) 0 0.65px, transparent 1px);
-      background-size: 260px 260px, 340px 340px, 290px 290px, 400px 400px;
-      animation: dustShift 24s linear infinite;
     }
 
     /* ПЕРВЫЙ ЭКРАН */
@@ -112,7 +91,7 @@
 
     .visual {
       position: relative; width: min(80vw, 420px); height: 400px;
-display: flex; align-items: center; justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       margin: -20px 0; z-index: 2;
     }
 
@@ -123,22 +102,19 @@ display: flex; align-items: center; justify-content: center;
     }
 
     .pearl, .mist, .ring, .halo, .spark { position: absolute; pointer-events: none; }
-    
     .pearl { border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; mix-blend-mode: screen; }
     .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
-    .pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
-    
+    .
+pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
     .mist { border-radius: 50%; mix-blend-mode: screen; filter: blur(34px); opacity: 0.8; }
     .mist-1 { width: 60%; height: 80%; background: radial-gradient(circle, rgba(208,209,224,0.3), transparent 70%); transform: rotate(26deg); animation: float1 8.5s infinite; }
     .mist-2 { width: 80%; height: 60%; background: radial-gradient(circle, rgba(206,161,225,0.25), transparent 70%); transform: rotate(-18deg); animation: float2 10.5s infinite; }
     .mist-3 { width: 70%; height: 70%; background: radial-gradient(circle, rgba(161,175,205,0.2), transparent 68%); animation: float3 12s infinite; }
-
     .halo, .ring { border: 1px solid rgba(93, 86, 122, 0.12); border-radius: 50%; }
     .halo-1 { width: 78%; height: 78%; animation: spinSlow 18s linear infinite; }
     .halo-2 { width: 98%; height: 98%; border-color: rgba(161,175,205,0.14); animation: spinReverse 26s linear infinite; }
     .ring-1 { width: 110%; height: 85%; border-color: rgba(206,161,225,0.18); transform: rotate(18deg); animation: tilt1 11s infinite; }
     .ring-2 { width: 90%; height: 120%; border-color: rgba(161,175,205,0.15); transform: rotate(-14deg); animation: tilt2 13s infinite; }
-
     .spark { width: 5px; height: 5px; border-radius: 50%; background: #fff; box-shadow: 0 0 15px #fff; opacity: 0.8; }
     .s1 { top: 16%; left: 54%; animation: drift1 8s infinite; }
     .s2 { top: 28%; left: 22%; animation: drift2 10s infinite; }
@@ -161,7 +137,7 @@ display: flex; align-items: center; justify-content: center;
     .photo-square {
       width: clamp(280px, 45vw, 380px); aspect-ratio: 1 / 1; background: #ffffff;
       border-radius: 24px; box-shadow: 0 24px 48px rgba(128, 127, 173, 0.15), inset 0 0 0 1px rgba(206, 161, 225, 0.3);
-position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: translateY(30px);
+      position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: translateY(30px);
       animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
       display: flex; align-items: center; justify-content: center;
       color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
@@ -179,106 +155,107 @@ position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: tra
       position: relative; z-index: 10; opacity: 0; animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards;
     }
     .btn-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; width: 100%; }
-
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-      text-decoration: none; border: none; border-radius: 999px;
-      padding: 16px 32px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all .35s ease;
-    }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; border: none; border-radius: 999px; padding: 16px 32px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all .35s ease; }
     .btn svg { width: 20px; height: 20px; }
-
-    .btn-primary {
-      color: white; background: linear-gradient(135deg, #cea1e1 0%, #b7a0be 40%, #807fad 100%);
-      box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.6);
-      padding: 18px 42px; font-size: 17px; animation: pulseBtn 2s infinite;
-    }
+    .btn-primary { color: white; background: linear-gradient(135deg, #cea1e1 0%, #b7a0be 40%, #807fad 100%); box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.6); padding: 18px 42px; font-size: 17px; animation: pulseBtn 2s infinite; }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(128, 127, 173, 0.35), 0 0 20px rgba(206, 161, 225, 0.4); }
-
     .btn-secondary { color: var(--text-dark); background: rgba(255,255,255,0.6); border: 1px solid rgba(75,95,150,0.15); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.8); }
     .btn-secondary:hover { transform: translateY(-2px); background: rgba(255,255,255,0.85); }
-
     .btn-tertiary { color: var(--text-soft); background: transparent; border: 1px solid rgba(75,95,150,0.2); }
     .btn-tertiary:hover { background: rgba(255,255,255,0.3); color: var(--text-dark); }
 
     /* СЕКЦИЯ ЦИТАТ */
     .quotes-section {
       position: relative;
-      padding: 40px 24px 100px;
+      padding: 60px 24px 120px;
       display: flex;
       justify-content: center;
       z-index: 3;
     }
 
     .quotes-inner {
-      width: min(900px, 100%);
+      width: min(1000px, 100%);
       display: flex;
       flex-direction: column;
-      gap: 80px; /* Расстояние между цитатами */
+      gap: 100px; /* Увеличил расстояние между цитатами */
     }
 
     .quote-block {
       position: relative;
-      max-width: 540px;
+      /* Убрал max-width, теперь ширина зависит от контента и flex */
     }
 
-    /* Первая цитата - слева */
+    /* Первая цитата - занимает левую часть (до 60%) */
     .quote-1 {
       align-self: flex-start;
+      width: min(600px, 100%);
     }
 
-    /* Вторая цитата - справа */
+    /* Вторая цитата - занимает правую часть, сдвиг */
     .quote-2 {
       align-self: flex-end;
+      width: min(480px, 100%); /* Чуть уже */
+      margin-right: 5%; /* Небольшой отступ от правого края */
     }
 
     .quote-block p {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(24px, 4vw, 32px);
+      font-size: clamp(24px, 4.2vw, 34px);
       line-height: 1.4;
       color: var(--text-dark);
       font-style: italic;
       position: relative;
-      z-index: 2;
-      text-align: left; /* Текст всегда по левому краю */
+      z-index: 2; /* Текст поверх ореола */
+      text-align: left; /* Текст всегда по левому краю внутри своего блока */
+      text-shadow: 0 0 15px rgba(255,255,255,0.5); /* Улучшает читаемость поверх ореола */
     }
 
-    /* Эфирные мерцающие ореолы под цитатами */
+    /* Эфирные мерцающие ореолы под цитатами (ФИКСИРОВАННО ВНУТРИ БЛОКА) */
     .quote-aura {
       position: absolute;
       border-radius: 50%;
-      filter: blur(40px);
-      opacity: 0.5;
-      z-index: 1;
+      filter: blur(35px);
+      opacity: 0.8; /* Сделал заметнее */
+      z-index: 1; /* Под текстом */
       pointer-events: none;
       mix-blend-mode: screen;
       animation: auraPulse 6s ease-in-out infinite alternate;
+      will-change: transform, opacity;
     }
 
+    /* Под большой цитатой - Ореол 1 заметный */
     .aura-1 {
-      width: 350px;
-      height: 350px;
-      background: radial-gradient(circle, rgba(206,161,225,0.4), transparent 70%);
-      top: -40px;
-      left: -40px;
+      width: 110%; /* Чуть шире текста */
+      height: 150%; /* Выше текста */
+      background: radial-gradient(circle at 50% 50%, 
+        rgba(206,161,225,0.7) 0%, 
+        rgba(206,161,225,0.3) 40%, 
+        transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); /* Точное центрирование */
     }
 
+    /* Под маленькой цитатой - Ореол 2 поменьше, заметный */
     .aura-2 {
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(161,175,205,0.4), transparent 70%);
-      bottom: -30px;
-      left: -20px;
+      width: 110%;
+      height: 160%;
+      background: radial-gradient(circle at 50% 50%, 
+        rgba(161,175,205,0.7) 0%, 
+        rgba(161,175,205,0.3) 45%, 
+        transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       animation-delay: 1s;
     }
 
     /* Ключевые кадры Анимаций */
     @keyframes fadeInElement { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulseBtn { 0% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.5); } 70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 15px rgba(206, 161, 225, 0); } 100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); } }
+    @keyframes pulseBtn { 0% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.5); } 70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.
+25), 0 0 0 15px rgba(206, 161, 225, 0); } 100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); } }
     @keyframes bgBreath { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .90; } }
     @keyframes shimmerField { 0% { transform: translateX(-2%) scale(1.18); } 50% { transform: translateX(2%) scale(1.22); } 100% { transform: translateX(-2%) scale(1.18); } }
-    @keyframes dustShift { 0% { transform: translate(0,0); } 50% { transform: translate(8px,-10px); } 100% { transform: translate(0,0); } }
-    @keyframes morphOuter { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.04) rotate(6deg); border-radius: 56% 44% 50% 50% / 40% 60% 44% 56%; } }
-    @keyframes morphMid { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.06) rotate(-6deg); border-radius: 58% 42% 48% 52% / 42% 58% 40% 60%; } }
     @keyframes float1 { 0%,100% { transform: rotate(26deg) translate(0,0) scale(1); } 50% { transform: rotate(34deg) translate(10px,-12px) scale(1.08); } }
     @keyframes float2 { 0%,100% { transform: rotate(-18deg) translate(0,0) scale(1); } 50% { transform: rotate(-8deg) translate(-14px,10px) scale(1.06); } }
     @keyframes float3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(8px,-8px) scale(1.06); } }
@@ -294,7 +271,7 @@ position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: tra
     @keyframes drift6 { 0%,100% { transform: translate(0,0); opacity:.55; } 50% { transform: translate(12px,16px); opacity:1; } }
     @keyframes drift7 { 0%,100% { transform: translate(0,0); opacity:.4; } 50% { transform: translate(14px,-12px); opacity:.82; } }
     @keyframes drift8 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-10px,12px); opacity:.88; } }
-    @keyframes auraPulse { 0% { transform: scale(1); opacity: 0.4; } 100% { transform: scale(1.1); opacity: 0.7; } }
+    @keyframes auraPulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; } 100% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.9; } }
 
     /* Мобильная адаптация */
     @media (max-width: 640px) {
@@ -308,25 +285,21 @@ position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: tra
       .subtitle span { margin: 0 4px; }
       .btn-row { flex-direction: column; }
       .btn { width: 100%; }
-      .grain, .bg-shimmer { display: none; }
+      .hero::after { display: none; }
       .bg-glow { filter: blur(30px); }
       
       /* Адаптация цитат */
-      .
-quotes-inner { gap: 60px; }
-      .quote-block { max-width: 100%; }
-      .quote-1, .quote-2 { align-self: center; } /* На мобилках выравниваем по центру контейнера */
-      .quote-block p { font-size: 22px; }
-      .aura-1, .aura-2 { width: 200px; height: 200px; }
+      .quotes-inner { gap: 80px; }
+      .quote-1, .quote-2 { align-self: center; width: 100%; margin-right: 0; padding: 0 10px; }
+      .quote-block p { font-size: 24px; text-align: center; } /* На мобилках по центру */
+      .quote-aura { filter: blur(25px); opacity: 0.7; height: 140%; }
     }
   </style>
 </head>
 <body>
 
   <div class="site-background">
-    <div class="grain"></div>
     <div class="bg-glow"></div>
-    <div class="bg-shimmer"></div>
   </div>
 
   <section class="hero">
@@ -339,7 +312,7 @@ quotes-inner { gap: 60px; }
           
           <div class="mist mist-1"></div>
           <div class="mist mist-2"></div>
-          <div class="mist mist-3"></div>
+<div class="mist mist-3"></div>
           
           <div class="halo halo-1"></div>
           <div class="halo halo-2"></div>
