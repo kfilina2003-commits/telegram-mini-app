@@ -38,11 +38,9 @@
       color: var(--text-main);
     }
 
-    /* ГЛОБАЛЬНЫЙ ФОН ДЛЯ ВСЕГО САЙТА */
+    /* ГЛОБАЛЬНЫЙ ФОН */
     .site-background {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
+      position: fixed; inset: 0; z-index: -1;
       background:
         radial-gradient(circle at 18% 14%, rgba(206, 161, 225, 0.18), transparent 25%),
         radial-gradient(circle at 82% 18%, rgba(161, 175, 205, 0.18), transparent 24%),
@@ -61,25 +59,13 @@
 
     /* ПЕРВЫЙ ЭКРАН */
     .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-bottom: 80px;
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; padding-bottom: 80px;
     }
-
     .hero-inner {
-      position: relative;
-      z-index: 3;
-      width: min(1000px, 100%);
-      padding: 60px 24px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+      position: relative; z-index: 3; width: min(1000px, 100%); padding: 60px 24px 20px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
     }
-
     .eyebrow {
       display: inline-flex; align-items: center; gap: 12px; padding: 10px 20px;
       border-radius: 999px; border: 1px solid var(--line); background: var(--glass);
@@ -88,24 +74,19 @@
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.42); z-index: 10;
     }
-
     .visual {
       position: relative; width: min(80vw, 420px); height: 400px;
-      display: flex; align-items: center; justify-content: center;
-      margin: -20px 0; z-index: 2;
+      display: flex; align-items: center; justify-content: center; margin: -20px 0; z-index: 2;
     }
-
     .core {
-      position: relative; width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
+      position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
       filter: drop-shadow(0 0 28px rgba(128, 127, 173, 0.18)); will-change: transform;
     }
-
     .pearl, .mist, .ring, .halo, .spark { position: absolute; pointer-events: none; }
     .pearl { border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; mix-blend-mode: screen; }
     .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
-    .
-pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
+    .pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.
+86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
     .mist { border-radius: 50%; mix-blend-mode: screen; filter: blur(34px); opacity: 0.8; }
     .mist-1 { width: 60%; height: 80%; background: radial-gradient(circle, rgba(208,209,224,0.3), transparent 70%); transform: rotate(26deg); animation: float1 8.5s infinite; }
     .mist-2 { width: 80%; height: 60%; background: radial-gradient(circle, rgba(206,161,225,0.25), transparent 70%); transform: rotate(-18deg); animation: float2 10.5s infinite; }
@@ -126,14 +107,12 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
     .s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
 
     h1 {
-      font-family: 'Forum', serif;
-      font-size: clamp(52px, 8.5vw, 100px);
+      font-family: 'Forum', serif; font-size: clamp(52px, 8.5vw, 100px);
       font-weight: 400; color: var(--text-dark); line-height: 1;
       margin-top: -90px; margin-bottom: 30px; position: relative; z-index: 10;
       text-shadow: 0 0 30px rgba(255,255,255,0.9), 0 0 10px rgba(255,255,255,0.6);
       white-space: nowrap;
     }
-
     .photo-square {
       width: clamp(280px, 45vw, 380px); aspect-ratio: 1 / 1; background: #ffffff;
       border-radius: 24px; box-shadow: 0 24px 48px rgba(128, 127, 173, 0.15), inset 0 0 0 1px rgba(206, 161, 225, 0.3);
@@ -142,20 +121,19 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
       display: flex; align-items: center; justify-content: center;
       color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
     }
-
     .subtitle {
       max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 26px);
       line-height: 1.5; color: var(--text-dark); margin-bottom: 48px; position: relative; z-index: 10;
       opacity: 0; animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s forwards;
     }
     .subtitle span { color: #b7a0be; margin: 0 6px; }
-
     .actions {
       display: flex; flex-direction: column; align-items: center; gap: 16px; width: 100%;
       position: relative; z-index: 10; opacity: 0; animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 1.2s forwards;
     }
     .btn-row { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; width: 100%; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; border: none; border-radius: 999px; padding: 16px 32px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all .35s ease; }
+    .
+btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; border: none; border-radius: 999px; padding: 16px 32px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all .35s ease; }
     .btn svg { width: 20px; height: 20px; }
     .btn-primary { color: white; background: linear-gradient(135deg, #cea1e1 0%, #b7a0be 40%, #807fad 100%); box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.6); padding: 18px 42px; font-size: 17px; animation: pulseBtn 2s infinite; }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(128, 127, 173, 0.35), 0 0 20px rgba(206, 161, 225, 0.4); }
@@ -166,97 +144,63 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
 
     /* СЕКЦИЯ ЦИТАТ */
     .quotes-section {
-      position: relative;
-      padding: 60px 24px 120px;
-      display: flex;
-      justify-content: center;
-      z-index: 3;
+      position: relative; padding: 80px 24px 140px;
+      display: flex; justify-content: center; z-index: 3;
     }
-
     .quotes-inner {
-      width: min(1000px, 100%);
-      display: flex;
-      flex-direction: column;
-      gap: 100px; /* Увеличил расстояние между цитатами */
+      width: min(1000px, 100%); display: flex; flex-direction: column; gap: 120px;
     }
-
-    .quote-block {
-      position: relative;
-      /* Убрал max-width, теперь ширина зависит от контента и flex */
-    }
-
-    /* Первая цитата - занимает левую часть (до 60%) */
-    .quote-1 {
-      align-self: flex-start;
-      width: min(600px, 100%);
-    }
-
-    /* Вторая цитата - занимает правую часть, сдвиг */
-    .quote-2 {
-      align-self: flex-end;
-      width: min(480px, 100%); /* Чуть уже */
-      margin-right: 5%; /* Небольшой отступ от правого края */
-    }
+    .quote-block { position: relative; }
+    .quote-1 { align-self: flex-start; width: min(600px, 100%); }
+    .quote-2 { align-self: flex-end; width: min(480px, 100%); margin-right: 5%; }
 
     .quote-block p {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(24px, 4.2vw, 34px);
-      line-height: 1.4;
-      color: var(--text-dark);
-      font-style: italic;
-      position: relative;
-      z-index: 2; /* Текст поверх ореола */
-      text-align: left; /* Текст всегда по левому краю внутри своего блока */
-      text-shadow: 0 0 15px rgba(255,255,255,0.5); /* Улучшает читаемость поверх ореола */
+      line-height: 1.4; color: var(--text-dark); font-style: italic;
+      position: relative; z-index: 2; text-align: left;
+      /* Убрал тень, так как наложение color-dodge делает текст и так читаемым */
     }
 
-    /* Эфирные мерцающие ореолы под цитатами (ФИКСИРОВАННО ВНУТРИ БЛОКА) */
+    /* ЭФИРНЫЕ ОРЕОЛЫ - СУПЕР НАСЫЩЕННЫЕ */
     .quote-aura {
-      position: absolute;
-      border-radius: 50%;
+      position: absolute; border-radius: 50%;
       filter: blur(35px);
-      opacity: 0.8; /* Сделал заметнее */
-      z-index: 1; /* Под текстом */
-      pointer-events: none;
-      mix-blend-mode: screen;
+      /* Сделал ярче через режим наложения */
+      mix-blend-mode: color-dodge; /* "Осветление основы" - делает цвета ядерными */
+      opacity: 1; /* Полная непрозрачность */
+      z-index: 1; pointer-events: none;
       animation: auraPulse 6s ease-in-out infinite alternate;
       will-change: transform, opacity;
     }
 
-    /* Под большой цитатой - Ореол 1 заметный */
+    /* Под большой цитатой - Лиловый плазменный */
     .aura-1 {
-      width: 110%; /* Чуть шире текста */
-      height: 150%; /* Выше текста */
+      width: 120%; height: 160%;
       background: radial-gradient(circle at 50% 50%, 
-        rgba(206,161,225,0.7) 0%, 
-        rgba(206,161,225,0.3) 40%, 
-        transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* Точное центрирование */
+        rgba(206,161,225,0.95) 0%,   /* Плотный цвет в центре */
+        rgba(183,160,190,0.6) 40%, 
+        transparent 75%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
     }
 
-    /* Под маленькой цитатой - Ореол 2 поменьше, заметный */
+    /* Под маленькой цитатой - Синий плазменный */
     .aura-2 {
-      width: 110%;
-      height: 160%;
+      width: 120%; height: 170%;
       background: radial-gradient(circle at 50% 50%, 
-        rgba(161,175,205,0.7) 0%, 
-        rgba(161,175,205,0.3) 45%, 
-        transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+        rgba(128,127,173,0.98) 0%,   /* Почти непрозрачный синий */
+        rgba(161,175,205,0.5) 45%, 
+        transparent 75%);
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
       animation-delay: 1s;
     }
 
     /* Ключевые кадры Анимаций */
     @keyframes fadeInElement { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes pulseBtn { 0% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.5); } 70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.
-25), 0 0 0 15px rgba(206, 161, 225, 0); } 100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); } }
+    @keyframes pulseBtn { 0% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.5); } 70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 15px rgba(206, 161, 225, 0); } 100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); } }
     @keyframes bgBreath { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .90; } }
     @keyframes shimmerField { 0% { transform: translateX(-2%) scale(1.18); } 50% { transform: translateX(2%) scale(1.22); } 100% { transform: translateX(-2%) scale(1.18); } }
-    @keyframes float1 { 0%,100% { transform: rotate(26deg) translate(0,0) scale(1); } 50% { transform: rotate(34deg) translate(10px,-12px) scale(1.08); } }
+@keyframes float1 { 0%,100% { transform: rotate(26deg) translate(0,0) scale(1); } 50% { transform: rotate(34deg) translate(10px,-12px) scale(1.08); } }
     @keyframes float2 { 0%,100% { transform: rotate(-18deg) translate(0,0) scale(1); } 50% { transform: rotate(-8deg) translate(-14px,10px) scale(1.06); } }
     @keyframes float3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(8px,-8px) scale(1.06); } }
     @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
@@ -271,9 +215,9 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
     @keyframes drift6 { 0%,100% { transform: translate(0,0); opacity:.55; } 50% { transform: translate(12px,16px); opacity:1; } }
     @keyframes drift7 { 0%,100% { transform: translate(0,0); opacity:.4; } 50% { transform: translate(14px,-12px); opacity:.82; } }
     @keyframes drift8 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-10px,12px); opacity:.88; } }
-    @keyframes auraPulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; } 100% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.9; } }
+    @keyframes auraPulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; } }
 
-    /* Мобильная адаптация */
+    /* МОБИЛЬНАЯ АДАПТАЦИЯ (ФОКУС НА IPHONE 17 PRO) */
     @media (max-width: 640px) {
       .hero-inner { padding: 40px 12px 10px; }
       .eyebrow { font-size: 11px; padding: 8px 16px; gap: 8px; }
@@ -288,11 +232,23 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
       .hero::after { display: none; }
       .bg-glow { filter: blur(30px); }
       
-      /* Адаптация цитат */
+      /* АДАПТАЦИЯ ЦИТАТ */
+      .quotes-section { padding-bottom: 100px; }
       .quotes-inner { gap: 80px; }
-      .quote-1, .quote-2 { align-self: center; width: 100%; margin-right: 0; padding: 0 10px; }
-      .quote-block p { font-size: 24px; text-align: center; } /* На мобилках по центру */
-      .quote-aura { filter: blur(25px); opacity: 0.7; height: 140%; }
+      .quote-block { padding: 0 10px; }
+
+      /* Цитата 1 на мобильных */
+      .quote-1 { width: 100%; align-self: flex-start; margin-left: -5px; }
+
+      /* Цитата 2 на мобильных - СМЕЩЕНА ВПРАВО */
+      .quote-2 {
+        width: 80%; /* Занимает 80% ширины */
+        align-self: flex-end; /* Прижата к правому краю контейнера */
+        margin-right: -5px; /* Минимальный отступ */
+      }
+
+      .quote-block p { font-size: 24px; text-align: left; } /* Текст по левому краю внутри блока */
+      .quote-aura { filter: blur(25px); height: 140%; mix-blend-mode: color-dodge; }
     }
   </style>
 </head>
@@ -312,9 +268,8 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
           
           <div class="mist mist-1"></div>
           <div class="mist mist-2"></div>
-<div class="mist mist-3"></div>
-          
-          <div class="halo halo-1"></div>
+          <div class="mist mist-3"></div>
+<div class="halo halo-1"></div>
           <div class="halo halo-2"></div>
           <div class="ring ring-1"></div>
           <div class="ring ring-2"></div>
