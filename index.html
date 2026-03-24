@@ -3,818 +3,473 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Энергодиагностика | Эзотерические услуги</title>
-  <meta name="description" content="Энергодиагностика, разбор чакр, расклады и индивидуальные эзотерические консультации." />
+  <title>Hero Variant 1 — Pearl Iteration</title>
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --bg-main: #d0d1e0;
+      --bg-soft: #ececf4;
+      --bg-accent: #f5f1f8;
+
+      --c0: #b7a0be;
+      --c1: #cea1e1;
+      --c2: #807fad;
+      --c3: #a1afcd;
+      --c4: #d0d1e0;
+
+      --text-main: #4b5f96;
+      --text-soft: rgba(75, 95, 150, 0.78);
+      --line: rgba(75, 95, 150, 0.12);
+      --glass: rgba(255, 255, 255, 0.42);
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background:
-        radial-gradient(circle at top, rgba(124, 58, 237, 0.28), transparent 35%),
-        radial-gradient(circle at bottom, rgba(236, 72, 153, 0.18), transparent 30%),
-        linear-gradient(180deg, #0b0615 0%, #140a24 45%, #1a0d2f 100%);
-      color: #f6f0ff;
-      line-height: 1.5;
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow-x: hidden;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(9, 4, 20, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-      gap: 16px;
-    }
-
-    .logo {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-    }
-
-    .nav {
-      display: flex;
-      gap: 18px;
-      font-size: 14px;
-      color: rgba(255,255,255,0.84);
-    }
+    body { color: var(--text-main); }
 
     .hero {
       position: relative;
       min-height: 100vh;
+      overflow: hidden;
       display: flex;
       align-items: center;
-      padding: 80px 0 50px;
-      overflow: hidden;
+      justify-content: center;
+      isolation: isolate;
+      background:
+        radial-gradient(circle at 18% 14%, rgba(206, 161, 225, 0.18), transparent 25%),
+        radial-gradient(circle at 82% 18%, rgba(161, 175, 205, 0.18), transparent 24%),
+        radial-gradient(circle at 50% 78%, rgba(183, 160, 190, 0.16), transparent 30%),
+        linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-main) 54%, #cdd0e2 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .hero::before {
-      content: "";
+      background:
+        radial-gradient(circle at 50% 48%, rgba(255,255,255,0.55), transparent 14%),
+        radial-gradient(circle at 52% 44%, rgba(206, 161, 225, 0.22), transparent 18%),
+        radial-gradient(circle at 44% 54%, rgba(161, 175, 205, 0.18), transparent 20%);
+      filter: blur(56px);
+      animation: bgBreath 13s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    .hero::after {
+      background:
+        linear-gradient(115deg, transparent 0%, rgba(255,255,255,0.30) 46%, transparent 54%),
+        linear-gradient(295deg, transparent 0%, rgba(255,255,255,0.14) 46%, transparent 54%);
+      opacity: 0.72;
+      animation: shimmerField 20s linear infinite;
+      will-change: transform;
+    }
+
+    .grain {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle at 50% 42%, rgba(255,255,255,0.08), transparent 12%),
-        radial-gradient(circle at 50% 42%, rgba(192,132,252,0.14), transparent 26%),
-        radial-gradient(circle at 50% 45%, rgba(236,72,153,0.10), transparent 34%);
+      z-index: 1;
+      opacity: 0.04;
       pointer-events: none;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(63,57,86,.6) 0 0.65px, transparent 1px),
+        radial-gradient(circle at 70% 40%, rgba(63,57,86,.38) 0 0.65px, transparent 1px),
+        radial-gradient(circle at 30% 70%, rgba(63,57,86,.38) 0 0.65px, transparent 1px),
+        radial-gradient(circle at 90% 80%, rgba(63,57,86,.28) 0 0.65px, transparent 1px);
+      background-size: 260px 260px, 340px 340px, 290px 290px, 400px 400px;
+      animation: dustShift 24s linear infinite;
     }
 
-    .hero-content {
+    .hero-inner {
       position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 920px;
-      margin: 0 auto;
+      z-index: 3;
+      width: min(1180px, 100%);
+      padding: 44px 24px 84px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
     }
 
-    .badge {
-      display: inline-block;
+    .copy { max-width: 530px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
-      color: #eadcff;
-      font-size: 13px;
+      border: 1px solid var(--line);
+      background: var(--glass);
+      color: rgba(75, 95, 150, 0.78);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       margin-bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42);
     }
 
     h1 {
-      margin: 26px 0 18px;
-      font-size: clamp(36px, 6vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.02em;
+      font-size: clamp(44px, 6vw, 84px);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #4d629c;
     }
 
-    .hero p {
-      margin: 0 auto 28px;
-      font-size: 19px;
-      color: rgba(255,255,255,0.82);
-      max-width: 760px;
+    h1 .sub {
+      display: block;
+      color: #647bb4;
+      text-shadow: 0 0 18px rgba(255,255,255,0.50);
     }
 
-    .buttons {
+    .copy p {
+      max-width: 470px;
+font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.72;
+      color: var(--text-soft);
+      margin-bottom: 28px;
+    }
+
+    .actions {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
       gap: 14px;
-      margin-bottom: 34px;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 22px;
-      border-radius: 14px;
-      font-weight: 700;
-      transition: 0.2s ease;
+      appearance: none;
+      text-decoration: none;
+      border: none;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
       color: white;
-      box-shadow: 0 12px 28px rgba(192, 132, 252, 0.25);
+      background: linear-gradient(135deg, #cea1e1 0%, #b7a0be 30%, #807fad 62%, #a1afcd 100%);
+      box-shadow:
+        0 14px 34px rgba(128, 127, 173, 0.18),
+        0 0 28px rgba(206, 161, 225, 0.22);
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow:
+        0 18px 42px rgba(128, 127, 173, 0.24),
+        0 0 38px rgba(206, 161, 225, 0.28);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: #f5ebff;
+      color: var(--text-main);
+      background: rgba(255,255,255,0.44);
+      border: 1px solid rgba(75,95,150,0.12);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.48);
     }
 
-    .hero-visual {
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.58);
+    }
+
+    .visual {
       position: relative;
-      width: 100%;
-      max-width: 520px;
-      height: 500px;
-      margin: 0 auto 10px;
+      min-height: 540px;
+      height: min(78vh, 780px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .energy-aura {
+    .core {
+      position: relative;
+      width: min(42vw, 530px);
+      aspect-ratio: 1 / 1.22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      filter: drop-shadow(0 0 28px rgba(128, 127, 173, 0.18));
+      will-change: transform;
+    }
+
+    .pearl, .mist, .ring, .halo, .spark, .sheen {
       position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -52%);
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .pearl {
+      border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%;
+      mix-blend-mode: screen;
+      will-change: border-radius, transform;
+    }
+
+    .pearl-outer {
+      width: 96%; height: 96%;
       background:
-        radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(192,132,252,0.22) 18%, rgba(236,72,153,0.12) 36%, rgba(192,132,252,0.06) 52%, transparent 72%);
-filter: blur(8px);
-      animation: pulseAura 4s ease-in-out infinite;
+        radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%),
+        radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%),
+        radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%),
+        radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%);
+      filter: blur(28px);
+      animation: morphOuter 15s ease-in-out infinite;
     }
 
-    .energy-ring,
-    .energy-ring-2,
-    .energy-ring-3 {
-      position: absolute;
-      left: 50%;
-      top: 50%;
+    .pearl-mid {
+      width: 74%; height: 74%;
+      background:
+        radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%),
+        radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%),
+        radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%),
+        radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%),
+        radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%);
+      filter: blur(8px);
+      box-shadow:
+        inset 0 0 44px rgba(255,255,255,0.22),
+        inset -18px -12px 32px rgba(128,127,173,0.10),
+        0 0 34px rgba(206,161,225,0.16);
+      animation: morphMid 10s ease-in-out infinite;
+    }
+
+    .pearl-inner {
+      width: 48%; height: 48%;
+      background:
+        radial-gradient(circle at 35% 34%, rgba(255,255,255,0.98), transparent 22%),
+        radial-gradient(circle at 68% 62%, rgba(206,161,225,0.34), transparent 34%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,0.52), rgba(161,175,205,0.22) 48%, transparent 78%);
+      filter: blur(6px);
+      box-shadow:
+        inset 0 0 24px rgba(255,255,255,0.32),
+        0 0 26px rgba(255,255,255,0.26);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .mist {
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
-      transform: translate(-50%, -52%);
-      animation: rotateRing 18s linear infinite;
+      mix-blend-mode: screen;
+      filter: blur(34px);
+      opacity: .95;
+      will-change: transform;
     }
 
-    .energy-ring {
-      width: 300px;
-      height: 300px;
-      box-shadow: 0 0 30px rgba(192,132,252,0.16), inset 0 0 26px rgba(192,132,252,0.08);
-    }
+    .mist-1 { width: 55%; height: 78%; background: radial-gradient(circle, rgba(208,209,224,0.
+32), transparent 70%); transform: rotate(26deg); animation: float1 8.5s ease-in-out infinite; }
+    .mist-2 { width: 78%; height: 58%; background: radial-gradient(circle, rgba(206,161,225,0.28), transparent 70%); transform: rotate(-18deg); animation: float2 10.5s ease-in-out infinite; }
+    .mist-3 { width: 68%; height: 68%; background: radial-gradient(circle, rgba(161,175,205,0.22), transparent 68%); animation: float3 12s ease-in-out infinite; }
 
-    .energy-ring-2 {
-      width: 390px;
-      height: 390px;
-      border-color: rgba(236,72,153,0.12);
-      animation-duration: 26s;
-      animation-direction: reverse;
-    }
-
-    .energy-ring-3 {
-      width: 470px;
-      height: 470px;
-      border-color: rgba(255,255,255,0.06);
-      animation-duration: 34s;
-    }
-
-    .sparkles span {
-      position: absolute;
-      width: 6px;
-      height: 6px;
+    .sheen {
+      width: 28%; height: 92%;
       border-radius: 50%;
-      background: white;
-      box-shadow: 0 0 16px rgba(255,255,255,0.8), 0 0 30px rgba(192,132,252,0.5);
-      animation: twinkle 2.8s infinite ease-in-out;
+      background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.10), transparent 80%);
+      filter: blur(10px);
+      opacity: 0.7;
+      transform: rotate(22deg) translateX(-10%);
+      animation: sheenMove 9.5s ease-in-out infinite;
+      will-change: transform, opacity;
     }
 
-    .sparkles span:nth-child(1) { top: 70px; left: 210px; animation-delay: 0s; }
-    .sparkles span:nth-child(2) { top: 110px; right: 120px; animation-delay: .6s; }
-    .sparkles span:nth-child(3) { top: 180px; left: 95px; animation-delay: 1.2s; }
-    .sparkles span:nth-child(4) { top: 240px; right: 85px; animation-delay: .9s; }
-    .sparkles span:nth-child(5) { bottom: 120px; left: 140px; animation-delay: 1.6s; }
-    .sparkles span:nth-child(6) { bottom: 90px; right: 165px; animation-delay: .3s; }
-    .sparkles span:nth-child(7) { top: 135px; left: 50%; animation-delay: 1.9s; }
-    .sparkles span:nth-child(8) { bottom: 155px; left: 50px; animation-delay: .8s; }
-
-    .silhouette-wrap {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 220px;
-      height: 360px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 0 28px rgba(192,132,252,0.35));
+    .sheen-2 {
+      width: 18%; height: 72%;
+      opacity: 0.52;
+      transform: rotate(-16deg) translateX(24%);
+      animation-duration: 11s;
     }
 
-    .silhouette-glow {
-      position: absolute;
-      width: 180px;
-      height: 300px;
-      border-radius: 90px;
-      background: radial-gradient(circle at center, rgba(192,132,252,0.22), rgba(236,72,153,0.08), transparent 72%);
-      filter: blur(14px);
-      animation: bodyGlow 3.2s ease-in-out infinite;
-    }
+    .halo, .ring { border: 1px solid rgba(93, 86, 122, 0.14); border-radius: 50%; will-change: transform; }
+    .halo-1 { width: 74%; height: 74%; box-shadow: 0 0 28px rgba(206,161,225,0.08); animation: spinSlow 18s linear infinite; }
+    .halo-2 { width: 94%; height: 94%; border-color: rgba(161,175,205,0.16); animation: spinReverse 26s linear infinite; }
+    .ring-1 { width: 112%; height: 80%; border-color: rgba(206,161,225,0.22); transform: rotate(18deg); animation: tilt1 11s ease-in-out infinite; }
+    .ring-2 { width: 86%; height: 118%; border-color: rgba(161,175,205,0.18); transform: rotate(-14deg); animation: tilt2 13s ease-in-out infinite; }
 
-    .silhouette {
-      position: relative;
-      width: 150px;
-      height: 320px;
-    }
-
-    .head {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      width: 54px;
-      height: 54px;
+    .spark {
+      width: 6px; height: 6px;
       border-radius: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(228,210,255,0.88));
-      box-shadow: 0 0 18px rgba(255,255,255,0.45);
+      background: radial-gradient(circle, rgba(255,255,255,1), rgba(206,161,225,0.55));
+      box-shadow: 0 0 18px rgba(255,255,255,0.56);
+      opacity: 0.9;
+      will-change: transform, opacity;
     }
 
-    .body-shape {
-      position: absolute;
-      left: 50%;
-      top: 42px;
-      transform: translateX(-50%);
-      width: 112px;
-      height: 220px;
-      background: linear-gradient(180deg, rgba(250,244,255,0.96), rgba(214,189,255,0.9) 42%, rgba(188,140,252,0.82) 72%, rgba(236,72,153,0.72) 100%);
-      clip-path: polygon(50% 0%, 72% 8%, 84% 24%, 88% 42%, 100% 78%, 79% 90%, 68% 100%, 32% 100%, 21% 90%, 0% 78%, 12% 42%, 16% 24%, 28% 8%);
-      box-shadow: 0 0 28px rgba(192,132,252,0.35);
+    .s1 { top: 16%; left: 54%; animation: drift1 8s ease-in-out infinite; }
+    .s2 { top: 28%; left: 22%; animation: drift2 10s ease-in-out infinite; }
+    .s3 { top: 72%; left: 34%; animation: drift3 9s ease-in-out infinite; }
+    .s4 { top: 68%; left: 76%; animation: drift4 11s ease-in-out infinite; }
+    .s5 { top: 44%; left: 84%; animation: drift5 12s ease-in-out infinite; }
+    .s6 { top: 22%; left: 72%; animation: drift6 9s ease-in-out infinite; }
+    .s7 { top: 54%; left: 14%; animation: drift7 10.5s ease-in-out infinite; }
+    .s8 { top: 84%; left: 58%; animation: drift8 12.5s ease-in-out infinite; }
+
+    .scroll-hint {
+      position: absolute; left: 50%; bottom: 24px;
+      transform: translateX(-50%); z-index: 4;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(75,95,150,0.46);
     }
 
-    .arm-left,
-    .arm-right,
-    .leg-left,
-    .leg-right {
-      position: absolute;
-      background: linear-gradient(180deg, rgba(245,235,255,0.92), rgba(200,154,255,0.78));
-      border-radius: 999px;
-      box-shadow: 0 0 16px rgba(192,132,252,0.22);
+    .scroll-line {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, rgba(75,95,150,0.34), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
     }
 
-    .arm-left {
-      width: 20px;
-      height: 115px;
-      left: 12px;
-      top: 88px;
-      transform: rotate(30deg);
-    }
+    /* Анимации */
+    @keyframes bgBreath { 0%,100% { transform: scale(1) translateY(0); opacity: 1; } 50% { transform: scale(1.06) translateY(-12px); opacity: .90; } }
+    @keyframes shimmerField { 0% { transform: translateX(-2%) translateY(0) scale(1.18); } 50% { transform: translateX(2%) translateY(-1%) scale(1.22); } 100% { transform: translateX(-2%) translateY(0) scale(1.18); } }
+    @keyframes dustShift { 0% { transform: translate(0,0); } 50% { transform: translate(8px,-10px); } 100% { transform: translate(0,0); } }
+    @keyframes morphOuter { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.04) rotate(6deg); border-radius: 56% 44% 50% 50% / 40% 60% 44% 56%; } }
+    @keyframes morphMid { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.06) rotate(-6deg); border-radius: 58% 42% 48% 52% / 42% 58% 40% 60%; } }
+@keyframes float1 { 0%,100% { transform: rotate(26deg) translate(0,0) scale(1); } 50% { transform: rotate(34deg) translate(10px,-12px) scale(1.08); } }
+    @keyframes float2 { 0%,100% { transform: rotate(-18deg) translate(0,0) scale(1); } 50% { transform: rotate(-8deg) translate(-14px,10px) scale(1.06); } }
+    @keyframes float3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(8px,-8px) scale(1.06); } }
+    @keyframes sheenMove { 0%,100% { transform: rotate(22deg) translateX(-18%) scaleY(1); opacity: 0.58; } 50% { transform: rotate(18deg) translateX(18%) scaleY(1.05); opacity: 0.82; } }
+    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes spinReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+    @keyframes tilt1 { 0%,100% { transform: rotate(18deg) scale(1); } 50% { transform: rotate(26deg) scale(1.03); } }
+    @keyframes tilt2 { 0%,100% { transform: rotate(-14deg) scale(1); } 50% { transform: rotate(-7deg) scale(.98); } }
+    @keyframes pulse { 0%,100% { transform: scale(.94); opacity: .84; } 50% { transform: scale(1.18); opacity: 1; } }
+    @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); opacity:.6; } 50% { transform: translate(-10px,-18px) scale(1.2); opacity:1; } }
+    @keyframes drift2 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(16px,-10px); opacity:.9; } }
+    @keyframes drift3 { 0%,100% { transform: translate(0,0); opacity:.5; } 50% { transform: translate(-12px,14px); opacity:.95; } }
+    @keyframes drift4 { 0%,100% { transform: translate(0,0); opacity:.55; } 50% { transform: translate(10px,-16px); opacity:1; } }
+    @keyframes drift5 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-18px,8px); opacity:.85; } }
+    @keyframes drift6 { 0%,100% { transform: translate(0,0); opacity:.55; } 50% { transform: translate(12px,16px); opacity:1; } }
+    @keyframes drift7 { 0%,100% { transform: translate(0,0); opacity:.4; } 50% { transform: translate(14px,-12px); opacity:.82; } }
+    @keyframes drift8 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-10px,12px); opacity:.88; } }
+    @keyframes scrollPulse { 0%,100% { opacity: .45; transform: scaleY(1); } 50% { opacity: 1; transform: scaleY(1.15); } }
 
-    .arm-right {
-      width: 20px;
-      height: 115px;
-      right: 12px;
-      top: 88px;
-      transform: rotate(-30deg);
-    }
-
-    .leg-left {
-      width: 22px;
-      height: 110px;
-      left: 44px;
-      bottom: 0;
-      transform: rotate(8deg);
-    }
-
-    .leg-right {
-      width: 22px;
-      height: 110px;
-      right: 44px;
-      bottom: 0;
-transform: rotate(-8deg);
-    }
-
-    .chakra {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      box-shadow: 0 0 16px currentColor, 0 0 36px currentColor;
-      animation: chakraPulse 2.4s ease-in-out infinite;
-    }
-
-    .c1 { top: 74px; color: #c084fc; animation-delay: 0s; }
-    .c2 { top: 103px; color: #ec4899; animation-delay: .2s; }
-    .c3 { top: 135px; color: #f59e0b; animation-delay: .4s; }
-    .c4 { top: 166px; color: #22c55e; animation-delay: .6s; }
-    .c5 { top: 197px; color: #38bdf8; animation-delay: .8s; }
-    .c6 { top: 229px; color: #818cf8; animation-delay: 1s; }
-    .c7 { top: 22px; color: #ffffff; animation-delay: 1.2s; }
-
-    .hero-note {
-      max-width: 760px;
-      margin: 18px auto 0;
-      padding: 16px 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: rgba(255,255,255,0.82);
-      backdrop-filter: blur(12px);
-      font-size: 15px;
-    }
-
-    section {
-      padding: 34px 0;
-    }
-
-    .section-title {
-      font-size: 30px;
-      margin: 0 0 18px;
-    }
-
-    .section-text {
-      color: rgba(255,255,255,0.78);
-      max-width: 760px;
-      margin: 0 0 28px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .card {
-      padding: 24px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 21px;
-    }
-
-    .card p {
-      margin: 0 0 18px;
-      color: rgba(255,255,255,0.78);
-      font-size: 15px;
-    }
-
-    .price {
-      font-size: 24px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .list {
-      margin: 0 0 22px;
-      padding-left: 18px;
-      color: rgba(255,255,255,0.82);
-      font-size: 14px;
-    }
-
-    .about {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 20px;
-    }
-
-    .about-box,
-    .contact-box {
-      padding: 26px;
-      border-radius: 24px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .quote {
-      font-size: 20px;
-      line-height: 1.45;
-      color: #f3e8ff;
-      margin: 0 0 14px;
-    }
-
-    .small {
-      font-size: 14px;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .step {
-      padding: 22px;
-      border-radius: 22px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .step-number {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .contacts {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .contact-links {
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .contact-link {
-      display: block;
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .footer {
-      padding: 34px 0 50px;
-      color: rgba(255,255,255,0.6);
-      font-size: 14px;
-      text-align: center;
-    }
-
-    @keyframes pulseAura {
-      0%, 100% {
-        transform: translate(-50%, -52%) scale(0.96);
-        opacity: 0.85;
-      }
-      50% {
-        transform: translate(-50%, -52%) scale(1.08);
-        opacity: 1;
-      }
-    }
-
-    @keyframes bodyGlow {
-      0%, 100% {
-        transform: scale(0.96);
-        opacity: 0.72;
-      }
-      50% {
-        transform: scale(1.08);
-        opacity: 1;
-      }
-    }
-
-    @keyframes twinkle {
-      0%, 100% {
-        opacity: 0.25;
-        transform: scale(0.6);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.25);
-      }
-    }
-@keyframes chakraPulse {
-      0%, 100% {
-        transform: translateX(-50%) scale(0.82);
-        opacity: 0.7;
-      }
-      50% {
-        transform: translateX(-50%) scale(1.25);
-        opacity: 1;
-      }
-    }
-
-    @keyframes rotateRing {
-      from {
-        transform: translate(-50%, -52%) rotate(0deg);
-      }
-      to {
-        transform: translate(-50%, -52%) rotate(360deg);
-      }
-    }
-
-    @media (max-width: 900px) {
-      .cards,
-      .about,
-      .steps,
-      .contacts {
+    /* Планшеты */
+    @media (max-width: 980px) {
+      .hero-inner {
         grid-template-columns: 1fr;
-      }
-
-      .nav {
-        display: none;
-      }
-
-      .hero {
+        text-align: center;
         padding-top: 54px;
       }
-
-      h1 {
-        font-size: 42px;
+      .copy {
+        max-width: 100%;
+        order: 1; /* Текст поднимаем наверх */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-
-      .hero p {
-        font-size: 16px;
+      .copy p { max-width: 620px; }
+      .visual {
+        order: 2; /* Визуал спускаем вниз */
+        min-height: 360px;
+        height: 46vh;
       }
-
-      .hero-visual {
-        height: 420px;
-      }
-
-      .energy-ring-3 {
-        width: 400px;
-        height: 400px;
-      }
-
-      .energy-ring-2 {
-        width: 330px;
-        height: 330px;
-      }
-
-      .energy-ring {
-        width: 260px;
-        height: 260px;
-      }
+      .core { width: min(74vw, 390px); }
     }
 
-    @media (max-width: 560px) {
-      .hero-visual {
-        height: 360px;
+    /* Мобильные телефоны */
+    @media (max-width: 640px) {
+      .hero-inner {
+        padding-left: 18px;
+        padding-right: 18px;
+        padding-bottom: 74px;
       }
-
-      .silhouette-wrap {
-        transform: translate(-50%, -50%) scale(0.85);
+      /* Оптимизация производительности: убираем лишнее на слабом железе */
+      .grain, .hero::after {
+        display: none; 
       }
-
-      h1 {
-        font-size: 34px;
+      .hero::before {
+        filter: blur(30px); /* Уменьшаем радиус блюра для снижения нагрузки GPU */
       }
-
-      .buttons {
-        flex-direction: column;
+      h1 { font-size: clamp(36px, 11vw, 52px); }
+      .copy p {
+        font-size: 15px;
+        line-height: 1.64;
       }
-
+      .actions {
+        width: 100%;
+        justify-content: center;
+      }
       .btn {
         width: 100%;
+        max-width: 320px;
+        text-align: center;
       }
+      .visual {
+        min-height: 300px;
+        height: 40vh;
+      }
+      .core { width: min(84vw, 330px); }
+      .scroll-hint { bottom: 16px; }
     }
   </style>
 </head>
 <body>
+  <section class="hero">
+    <div class="grain"></div>
 
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo">Mystic Space</div>
-      <nav class="nav">
-        <a href="#services">Услуги</a>
-        <a href="#about">Обо мне</a>
-        <a href="#steps">Как проходит</a>
-        <a href="#contacts">Контакты</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-content">
-        <div class="badge">Энергия • интуиция • диагностика состояния</div>
-
-        <div class="hero-visual">
-          <div class="energy-aura"></div>
-          <div class="energy-ring"></div>
-          <div class="energy-ring-2"></div>
-          <div class="energy-ring-3"></div>
-
-          <div class="sparkles">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
-
-          <div class="silhouette-wrap">
-            <div class="silhouette-glow"></div>
-            <div class="silhouette">
-              <div class="head"></div>
-              <div class="body-shape"></div>
-              <div class="arm-left"></div>
-              <div class="arm-right"></div>
-              <div class="leg-left"></div>
-              <div class="leg-right"></div>
-
-              <div class="chakra c1"></div>
-              <div class="chakra c2"></div>
-              <div class="chakra c3"></div>
-              <div class="chakra c4"></div>
-              <div class="chakra c5"></div>
-              <div class="chakra c6"></div>
-              <div class="chakra c7"></div>
-            </div>
-          </div>
-        </div>
-
-        <h1>Энергодиагностика, которая помогает увидеть твое состояние глубже обычных слов</h1>
+    <div class="hero-inner">
+      <div class="copy">
+        <div class="eyebrow">энергия • душа • тонкие ответы</div>
+        <h1>
+          Ксения
+<span class="sub">пространство, где ты слышишь себя глубже</span>
+        </h1>
         <p>
-          Мягко считываю твой энергетический фон, точки утечки ресурса, внутренние блоки,
-          сильные стороны и ключевые причины того, что сейчас происходит в жизни.
+          Энергодиагностика, хроники души и мягкая работа с внутренним полем —
+          как возвращение к себе, к своей истине и к голосу своей души.
         </p>
-
-        <div class="buttons">
-          <a class="btn btn-primary" href="#contacts">Записаться на диагностику</a>
-          <a class="btn btn-secondary" href="#services">Посмотреть форматы</a>
-        </div>
-
-        <div class="hero-note">
-          Энергодиагностика — мой основной продукт. Это не просто красивое описание состояния, а разбор,
-          после которого становится понятнее, где ты сейчас, что тебя ослабляет и в какую сторону идти дальше.
+        <div class="actions">
+          <a href="#" class="btn btn-primary">Перейти в Telegram</a>
+          <a href="#" class="btn btn-secondary">Узнать об услугах</a>
         </div>
       </div>
-    </section>
 
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title">Услуги</h2>
-        <p class="section-text">
-          Главный акцент — на энергодиагностике. Остальные форматы можно оставить как дополнительные.
-        </p>
+      <div class="visual">
+        <div class="core">
+          <div class="pearl pearl-outer"></div>
+          <div class="mist mist-1"></div>
+          <div class="mist mist-2"></div>
+          <div class="mist mist-3"></div>
+          <div class="halo halo-1"></div>
+          <div class="halo halo-2"></div>
+          <div class="ring ring-1"></div>
+          <div class="ring ring-2"></div>
+          <div class="pearl pearl-mid"></div>
+          <div class="sheen"></div>
+          <div class="sheen sheen-2"></div>
+          <div class="pearl pearl-inner"></div>
 
-        <div class="cards">
-<div class="card">
-            <h3>Энергодиагностика</h3>
-            <p>Главный продукт: глубокий разбор состояния, утечки энергии, внутренних блоков и ресурса.</p>
-            <div class="price">2 500 ₽</div>
-            <ul class="list">
-              <li>анализ текущего состояния</li>
-              <li>считывание слабых и сильных зон</li>
-              <li>понимание причин происходящего</li>
-              <li>рекомендации по дальнейшим шагам</li>
-            </ul>
-            <a class="btn btn-primary" href="#contacts">Записаться</a>
-          </div>
-
-          <div class="card">
-            <h3>Разбор чакральной системы</h3>
-            <p>Подробный разбор энергетических центров, эмоциональных блоков и проявления в жизни.</p>
-            <div class="price">3 500 ₽</div>
-            <ul class="list">
-              <li>разбор по центрам</li>
-              <li>эмоциональные и телесные сигналы</li>
-              <li>зоны напряжения и потенциала</li>
-            </ul>
-            <a class="btn btn-primary" href="#contacts">Записаться</a>
-          </div>
-
-          <div class="card">
-            <h3>Индивидуальный расклад</h3>
-            <p>Точечный формат под конкретный вопрос: отношения, деньги, выбор, состояние, путь.</p>
-            <div class="price">1 800 ₽</div>
-            <ul class="list">
-              <li>1 ключевой запрос</li>
-              <li>подробная интерпретация</li>
-              <li>подсказка по следующему шагу</li>
-            </ul>
-            <a class="btn btn-primary" href="#contacts">Записаться</a>
-          </div>
+          <span class="spark s1"></span>
+          <span class="spark s2"></span>
+          <span class="spark s3"></span>
+          <span class="spark s4"></span>
+          <span class="spark s5"></span>
+          <span class="spark s6"></span>
+          <span class="spark s7"></span>
+          <span class="spark s8"></span>
         </div>
       </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">Обо мне</h2>
-        <div class="about">
-          <div class="about-box">
-            <p class="quote">
-              Я работаю бережно и глубоко. Моя задача — помочь тебе не просто услышать красивый текст,
-              а почувствовать ясность, увидеть корень состояния и вернуть контакт с собой.
-            </p>
-            <p class="small">
-              Здесь потом напишешь про свой подход, опыт, инструменты и с какими запросами к тебе приходят чаще всего.
-            </p>
-          </div>
-
-          <div class="about-box">
-            <h3>С чем можно прийти</h3>
-            <ul class="list">
-              <li>усталость и потеря ресурса</li>
-              <li>ощущение внутреннего застоя</li>
-              <li>отношения и повторяющиеся сценарии</li>
-              <li>непонимание своего пути</li>
-              <li>финансовые блоки и тревога</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="steps">
-      <div class="container">
-        <h2 class="section-title">Как проходит работа</h2>
-        <div class="steps">
-          <div class="step">
-            <div class="step-number">1</div>
-            <h3>Ты пишешь мне</h3>
-            <p class="small">Кратко описываешь свой запрос и выбираешь подходящий формат.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-number">2</div>
-            <h3>Я провожу диагностику</h3>
-            <p class="small">Считываю общее состояние, перекосы, внутреннее напряжение и точки ресурса.</p>
-          </div>
-
-          <div class="step">
-            <div class="step-number">3</div>
-            <h3>Ты получаешь разбор</h3>
-            <p class="small">С ясностью по твоей ситуации, акцентами и рекомендациями по следующему шагу.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contacts">
-      <div class="container">
-        <h2 class="section-title">Запись и контакты</h2>
-        <div class="contacts">
-          <div class="contact-box">
-            <h3>Связаться со мной</h3>
-            <p class="small">
-              Вставь сюда свои реальные ссылки.
-            </p>
-
-            <div class="contact-links">
-              <a class="contact-link" href="https://t.me/your_username" target="_blank">Telegram: @your_username</a>
-              <a class="contact-link" href="https://instagram.
-com/your_username" target="_blank">Instagram: @your_username</a>
-              <a class="contact-link" href="mailto:yourmail@example.com">Email: yourmail@example.com</a>
-            </div>
-          </div>
-
-          <div class="contact-box">
-            <h3>Как записаться</h3>
-            <p class="small">
-              Напиши мне в Telegram:
-              <br><br>
-              — что хочешь пройти энергодиагностику<br>
-              — с каким состоянием или запросом приходишь<br>
-              — в каком формате тебе удобно получить разбор
-            </p>
-            <div style="margin-top: 20px;">
-              <a class="btn btn-primary" href="https://t.me/your_username" target="_blank">Написать в Telegram</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      © 2026 Mystic Space. Все права защищены.
     </div>
-  </footer>
 
+    <div class="scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 </body>
 </html>
