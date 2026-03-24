@@ -7,7 +7,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Forum&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -48,7 +48,7 @@
       flex-direction: column;
       align-items: center;
       isolation: isolate;
-      padding-bottom: 80px; /* Немного уменьшил нижний отступ */
+      padding-bottom: 80px;
       background:
         radial-gradient(circle at 18% 14%, rgba(206, 161, 225, 0.18), transparent 25%),
         radial-gradient(circle at 82% 18%, rgba(161, 175, 205, 0.18), transparent 24%),
@@ -115,11 +115,12 @@
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.42);
       z-index: 10;
     }
-/* Анимация затравки (Сложная Версия) */
+
+    /* Анимация затравки (Без центральной точки) */
     .visual {
-      position: relative;
+position: relative;
       width: min(80vw, 420px);
-      height: 400px; /* Чуть уменьшил высоту для компактности */
+      height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -139,7 +140,8 @@
     .pearl { border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; mix-blend-mode: screen; }
     .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
     .pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
-    .pearl-inner { width: 46%; height: 46%; background: radial-gradient(circle at 35% 34%, rgba(255,255,255,0.98), transparent 22%), radial-gradient(circle at 68% 62%, rgba(206,161,225,0.34), transparent 34%), radial-gradient(circle at 50% 50%, rgba(255,255,255,0.52), rgba(161,175,205,0.22) 48%, transparent 78%); filter: blur(6px); box-shadow: inset 0 0 24px rgba(255,255,255,0.32), 0 0 26px rgba(255,255,255,0.26); animation: pulse 6s ease-in-out infinite; }
+    
+    /* Центральная точка (pearl-inner) удалена по запросу */
 
     /* Туманы */
     .mist { border-radius: 50%; mix-blend-mode: screen; filter: blur(34px); opacity: 0.8; }
@@ -163,25 +165,24 @@
     .s5 { top: 44%; left: 84%; animation: drift5 12s infinite; }
     .s6 { top: 22%; left: 72%; animation: drift6 9s infinite; }
     .s7 { top: 54%; left: 14%; animation: drift7 10.5s infinite; }
-    .
-s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
+    .s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
 
-    /* Заголовок с наложением (Новый шрифт и стиль) */
+    /* Заголовок с наложением (Шрифт Forum) */
     h1 {
-      font-family: 'Pinyon Script', cursive;
-      font-size: clamp(64px, 10vw, 120px);
+      font-family: 'Forum', serif;
+      font-size: clamp(52px, 8.5vw, 100px); /* Скорректировано для шрифта Forum */
       font-weight: 400;
       color: var(--text-dark);
       line-height: 1;
-      margin-top: -90px; /* Наложение на анимацию */
+      margin-top: -90px;
       margin-bottom: 30px;
       position: relative;
       z-index: 10;
       text-shadow: 0 0 30px rgba(255,255,255,0.9), 0 0 10px rgba(255,255,255,0.6);
-      white-space: nowrap; /* Принудительно в одну строку */
+white-space: nowrap;
     }
 
-    /* Плейсхолдер для фото (Увеличен) */
+    /* Плейсхолдер для фото */
     .photo-square {
       width: clamp(280px, 45vw, 380px);
       aspect-ratio: 1 / 1;
@@ -248,7 +249,8 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
     .btn-primary {
       color: white; background: linear-gradient(135deg, #cea1e1 0%, #b7a0be 40%, #807fad 100%);
       box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.6);
-      padding: 18px 42px; font-size: 17px; animation: pulseBtn 3s infinite;
+      padding: 18px 42px; font-size: 17px; 
+      animation: pulseBtn 2s infinite; /* Анимация стала быстрее */
     }
 
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 42px rgba(128, 127, 173, 0.35), 0 0 20px rgba(206, 161, 225, 0.4); }
@@ -266,12 +268,13 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
       70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 15px rgba(206, 161, 225, 0); }
       100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); }
     }
-    /* Анимации Базовые (из оригинального кода) */
+    
+    /* Анимации Базовые */
     @keyframes bgBreath { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .90; } }
-@keyframes shimmerField { 0% { transform: translateX(-2%) scale(1.18); } 50% { transform: translateX(2%) scale(1.22); } 100% { transform: translateX(-2%) scale(1.18); } }
+    @keyframes shimmerField { 0% { transform: translateX(-2%) scale(1.18); } 50% { transform: translateX(2%) scale(1.22); } 100% { transform: translateX(-2%) scale(1.18); } }
     @keyframes dustShift { 0% { transform: translate(0,0); } 50% { transform: translate(8px,-10px); } 100% { transform: translate(0,0); } }
     @keyframes morphOuter { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.04) rotate(6deg); border-radius: 56% 44% 50% 50% / 40% 60% 44% 56%; } }
-    @keyframes morphMid { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.06) rotate(-6deg); border-radius: 58% 42% 48% 52% / 42% 58% 40% 60%; } }
+@keyframes morphMid { 0%,100% { transform: scale(1) rotate(0deg); border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; } 50% { transform: scale(1.06) rotate(-6deg); border-radius: 58% 42% 48% 52% / 42% 58% 40% 60%; } }
     @keyframes float1 { 0%,100% { transform: rotate(26deg) translate(0,0) scale(1); } 50% { transform: rotate(34deg) translate(10px,-12px) scale(1.08); } }
     @keyframes float2 { 0%,100% { transform: rotate(-18deg) translate(0,0) scale(1); } 50% { transform: rotate(-8deg) translate(-14px,10px) scale(1.06); } }
     @keyframes float3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(8px,-8px) scale(1.06); } }
@@ -279,7 +282,6 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
     @keyframes spinReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
     @keyframes tilt1 { 0%,100% { transform: rotate(18deg) scale(1); } 50% { transform: rotate(26deg) scale(1.03); } }
     @keyframes tilt2 { 0%,100% { transform: rotate(-14deg) scale(1); } 50% { transform: rotate(-7deg) scale(.98); } }
-    @keyframes pulse { 0%,100% { transform: scale(.94); opacity: .84; } 50% { transform: scale(1.18); opacity: 1; } }
     @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); opacity:.6; } 50% { transform: translate(-10px,-18px) scale(1.2); opacity:1; } }
     @keyframes drift2 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(16px,-10px); opacity:.9; } }
     @keyframes drift3 { 0%,100% { transform: translate(0,0); opacity:.5; } 50% { transform: translate(-12px,14px); opacity:.95; } }
@@ -289,33 +291,18 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
     @keyframes drift7 { 0%,100% { transform: translate(0,0); opacity:.4; } 50% { transform: translate(14px,-12px); opacity:.82; } }
     @keyframes drift8 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-10px,12px); opacity:.88; } }
 
-    /* Мобильная адаптация (Фокус на iPhone Pro) */
+    /* Мобильная адаптация */
     @media (max-width: 640px) {
-      /* Минимальные отступы по бокам */
       .hero-inner { padding: 40px 12px 10px; }
-      
       .eyebrow { font-size: 11px; padding: 8px 16px; gap: 8px; }
-      
       .visual { width: 100%; height: 300px; margin: -30px 0; }
       .core { filter: drop-shadow(0 0 20px rgba(128, 127, 173, 0.15)); }
-      
-      h1 { margin-top: -50px; margin-bottom: 20px; font-size: clamp(50px, 14vw, 70px); }
-      
-      /* Большая фотография с минимальными отступами */
-      .photo-square {
-        width: 94%; /* Почти на весь экран */
-        aspect-ratio: 1 / 1;
-        margin-bottom: 30px;
-        border-radius: 20px;
-      }
-      
+      h1 { margin-top: -50px; margin-bottom: 20px; font-size: clamp(40px, 12vw, 60px); }
+      .photo-square { width: 94%; aspect-ratio: 1 / 1; margin-bottom: 30px; border-radius: 20px; }
       .subtitle { font-size: 19px; line-height: 1.45; margin-bottom: 36px; padding: 0 8px; }
       .subtitle span { margin: 0 4px; }
-      
       .btn-row { flex-direction: column; }
       .btn { width: 100%; }
-      
-      /* Оптимизация производительности для мобильных */
       .grain, .hero::after { display: none; }
       .hero::before { filter: blur(30px); }
     }
@@ -327,7 +314,8 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
 
     <div class="hero-inner">
       <div class="eyebrow">энергия • кристалл души • меркаба</div>
-<div class="visual">
+
+      <div class="visual">
         <div class="core">
           <div class="pearl pearl-outer"></div>
           
@@ -341,7 +329,6 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
           <div class="ring ring-2"></div>
           
           <div class="pearl pearl-mid"></div>
-          <div class="pearl pearl-inner"></div>
           
           <span class="spark s1"></span>
           <span class="spark s2"></span>
@@ -359,8 +346,7 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
       <div class="photo-square">
         Место для фото
       </div>
-
-      <div class="subtitle">
+<div class="subtitle">
         Проводник Света <span>~</span> Дух, который помнит себя <span>~</span> Исследователь душ <span>~</span> Считываю хроники памяти <span>~</span> архитектура 5D измерения
       </div>
 
@@ -391,7 +377,7 @@ s8 { top: 84%; left: 58%; animation: drift8 12.5s infinite; }
   </section>
 
   <section id="services" style="min-height: 100vh; background: #fff; padding: 100px 20px; text-align: center;">
-    <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #4b5f96;">Мои услуги</h2>
+    <h2 style="font-family: 'Forum', serif; font-size: 40px; color: #4b5f96;">Мои услуги</h2>
   </section>
 
 </body>
