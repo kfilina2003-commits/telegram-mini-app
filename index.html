@@ -17,7 +17,10 @@
 
       --c0: #b7a0be;
       --c1: #cea1e1; /* сиреневый */
-      --c-gold: #d2c296; /* золотой/бежевый */
+      
+      /* ИСПРАВЛЕННЫЙ ЗОЛОТОЙ ЦВЕТ (был #d2c296, стал #F6CD61) */
+      --c-gold: #F6CD61; /* Чистый, сияющий золотистый без оранжевого отлива */
+      
       --c2: #807fad;
       --c3: #a1afcd;
       --c4: #d0d1e0;
@@ -84,11 +87,11 @@
     }
     .pearl, .mist, .ring, .halo, .spark { position: absolute; pointer-events: none; }
     .pearl { border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; mix-blend-mode: screen; }
-    .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
-    .
-pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
+    .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.
+18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
+    .pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
     
-    /* СУПЕР-ЯРКИЙ ЦЕНТР: СИРЕНЕВЫЙ И ЗОЛОТОЙ */
+    /* СУПЕР-ЯРКИЙ ЦЕНТР: СИРЕНЕВЫЙ И НОВЫЙ ЗОЛОТОЙ */
     .pearl-center-nexus {
       width: 40%; height: 40%;
       position: absolute;
@@ -103,11 +106,11 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
       content: ""; position: absolute; inset: -20%; border-radius: 50%;
     }
     .pearl-center-nexus::before {
-      background: radial-gradient(circle, #cea1e1 0%, transparent 75%); /* сиреневый */
+      background: radial-gradient(circle, var(--c1) 0%, transparent 75%); /* сиреневый var(--c1) */
       transform: translate(-10%, -10%);
     }
     .pearl-center-nexus::after {
-      background: radial-gradient(circle, #d2c296 0%, transparent 75%); /* золотой */
+      background: radial-gradient(circle, var(--c-gold) 0%, transparent 75%); /* НОВЫЙ золотой var(--c-gold) */
       transform: translate(10%, 10%);
     }
 
@@ -141,9 +144,9 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
       width: clamp(280px, 45vw, 380px); aspect-ratio: 1 / 1; background: #ffffff;
       border-radius: 24px; box-shadow: 0 24px 48px rgba(128, 127, 173, 0.15), inset 0 0 0 1px rgba(206, 161, 225, 0.3);
       position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: translateY(30px);
-      animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
+animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
       display: flex; align-items: center; justify-content: center;
-color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
     }
     .subtitle {
       max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 26px);
@@ -205,7 +208,7 @@ color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercas
     .aura-1 {
       width: 120%; height: 160%;
       background: radial-gradient(circle at 50% 50%, 
-        #cea1e1 0%,   
+        var(--c1) 0%,   /* Переменная var(--c1) */
         rgba(183,160,190,0.5) 40%, 
         transparent 75%);
       top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -215,16 +218,15 @@ color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercas
     .aura-2 {
       width: 120%; height: 170%;
       background: radial-gradient(circle at 50% 50%, 
-        #d2c296 0%,   /* Новый золотой цвет */
-        rgba(210, 194, 150, 0.4) 45%, /* Приглушенный золотой */
+        var(--c-gold) 0%,   /* ИСПОЛЬЗУЕМ var(--c-gold) (уже #F6CD61) */
+        rgba(246, 205, 97, 0.45) 45%, /* RGBA версия нового золотого */
         transparent 75%);
       top: 50%; left: 50%; transform: translate(-50%, -50%);
       animation-delay: 1s;
     }
-
-    /* Ключевые кадры Анимаций */
+/* Ключевые кадры Анимаций */
     @keyframes fadeInElement { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes pulseBtn { 0% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.5); } 70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 15px rgba(206, 161, 225, 0); } 100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); } }
+    @keyframes pulseBtn { 0% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.5); } 70% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 15px rgba(206, 161, 225, 0); } 100% { box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0); } }
     @keyframes bgBreath { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.06); opacity: .90; } }
     @keyframes shimmerField { 0% { transform: translateX(-2%) scale(1.18); } 50% { transform: translateX(2%) scale(1.22); } 100% { transform: translateX(-2%) scale(1.18); } }
     @keyframes float1 { 0%,100% { transform: rotate(26deg) translate(0,0) scale(1); } 50% { transform: rotate(34deg) translate(10px,-12px) scale(1.08); } }
@@ -266,13 +268,15 @@ color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercas
       .quote-block { padding: 0 10px; }
       .quote-1 { width: 100%; align-self: flex-start; margin-left: -5px; }
       .quote-2 { width: 80%; align-self: flex-end; margin-right: -5px; }
-      .quote-block p { font-size: 24px; text-align: left; } 
+      .
+quote-block p { font-size: 24px; text-align: left; } 
       .quote-aura { filter: blur(25px); height: 140%; opacity: 0.9; }
     }
   </style>
 </head>
 <body>
-<div class="site-background">
+
+  <div class="site-background">
     <div class="bg-glow"></div>
   </div>
 
