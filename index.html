@@ -47,6 +47,8 @@
         radial-gradient(circle at 82% 18%, rgba(161, 175, 205, 0.18), transparent 24%),
         radial-gradient(circle at 50% 78%, rgba(183, 160, 190, 0.16), transparent 30%),
         linear-gradient(180deg, var(--bg-soft) 0%, var(--bg-main) 54%, #cdd0e2 100%);
+      /* GPU-оптимизация фиксированного фона */
+      transform: translateZ(0); 
     }
 
     .bg-glow {
@@ -56,6 +58,7 @@
         radial-gradient(circle at 52% 44%, rgba(206, 161, 225, 0.22), transparent 18%),
         radial-gradient(circle at 44% 54%, rgba(161, 175, 205, 0.18), transparent 20%);
       filter: blur(56px); animation: bgBreath 13s ease-in-out infinite; will-change: transform, opacity;
+      backface-visibility: hidden;
     }
 
     /* === ЗАМОРОЖЕННЫЙ БЛОК: HERO === */
@@ -73,6 +76,7 @@
       text-transform: uppercase; margin-bottom: 20px;
       backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.42); z-index: 10;
+      transform: translateZ(0); /* GPU-оптимизация */
     }
     .visual {
       position: relative; width: min(80vw, 420px); height: 400px;
@@ -84,9 +88,9 @@
     }
     .pearl, .mist, .ring, .halo, .spark { position: absolute; pointer-events: none; }
     .pearl { border-radius: 50% 50% 46% 54% / 44% 56% 48% 52%; mix-blend-mode: screen; }
-    .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
-    .
-pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
+    .pearl-outer { width: 92%; height: 92%; background: radial-gradient(circle at 28% 32%, rgba(255,255,255,0.34), transparent 26%), radial-gradient(circle at 72% 28%, rgba(161,175,205,0.22), transparent 28%), radial-gradient(circle at 38% 72%, rgba(206,161,225,0.
+20), transparent 26%), radial-gradient(circle at 50% 50%, rgba(183,160,190,0.18), transparent 58%); filter: blur(28px); animation: morphOuter 15s ease-in-out infinite; }
+    .pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 30%, rgba(255,255,255,0.86), transparent 18%), radial-gradient(circle at 25% 72%, rgba(206,161,225,0.42), transparent 34%), radial-gradient(circle at 72% 34%, rgba(161,175,205,0.48), transparent 34%), radial-gradient(circle at 62% 70%, rgba(183,160,190,0.34), transparent 32%), radial-gradient(circle at 50% 50%, rgba(128,127,173,0.40), rgba(208,209,224,0.18) 58%, transparent 84%); filter: blur(8px); box-shadow: inset 0 0 44px rgba(255,255,255,0.22), inset -18px -12px 32px rgba(128,127,173,0.10), 0 0 34px rgba(206,161,225,0.16); animation: morphMid 10s ease-in-out infinite; }
     
     .pearl-center-nexus {
       width: 40%; height: 40%;
@@ -96,6 +100,7 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
       z-index: 1;
       opacity: 0.95;
       animation: centerPulse 4s infinite alternate;
+      will-change: transform, opacity; /* GPU-оптимизация */
     }
     .pearl-center-nexus::before,
     .pearl-center-nexus::after {
@@ -140,12 +145,14 @@ pearl-mid { width: 72%; height: 72%; background: radial-gradient(circle at 28% 3
       width: clamp(280px, 45vw, 380px); aspect-ratio: 1 / 1; background: #ffffff;
       border-radius: 24px; box-shadow: 0 24px 48px rgba(128, 127, 173, 0.15), inset 0 0 0 1px rgba(206, 161, 225, 0.3);
       position: relative; z-index: 10; margin-bottom: 40px; opacity: 0; transform: translateY(30px);
-      animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
+      animation: fadeInElement 1.
+2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards;
       display: flex; align-items: center; justify-content: center;
       color: #a1afcd; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
+      transform: translateZ(0); /* GPU-оптимизация */
     }
     .subtitle {
-max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 26px);
+      max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 26px);
       line-height: 1.5; color: var(--text-dark); margin-bottom: 48px; position: relative; z-index: 10;
       opacity: 0; animation: fadeInElement 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s forwards;
     }
@@ -160,6 +167,7 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
       display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; border: none; 
       border-radius: 999px; 
       padding: 16px 32px; font-size: 16px; font-weight: 500; cursor: pointer; transition: all .35s ease; 
+      transform: translateZ(0); /* GPU-оптимизация */
     }
     .btn svg { width: 20px; height: 20px; }
     .btn-primary { color: white; background: linear-gradient(135deg, #cea1e1 0%, #b7a0be 40%, #807fad 100%); box-shadow: 0 14px 34px rgba(128, 127, 173, 0.25), 0 0 0 0 rgba(206, 161, 225, 0.6); padding: 18px 42px; font-size: 17px; animation: pulseBtn 2s infinite; }
@@ -195,7 +203,8 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
       z-index: 1; pointer-events: none;
       mix-blend-mode: screen;
       animation: auraPulse 6s ease-in-out infinite alternate;
-      will-change: transform, opacity;
+      will-change: transform, opacity; /* GPU-оптимизация */
+      backface-visibility: hidden;
     }
 
     .aura-1 {
@@ -224,7 +233,8 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
       display: flex; justify-content: center; z-index: 3;
     }
     
-    .about-inner {
+    .
+about-inner {
       width: min(1000px, 100%); 
       display: flex; flex-direction: column; align-items: center; 
       position: relative;
@@ -232,11 +242,11 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
     
     .about-card-wrapper {
       position: relative;
-      margin-top: 15px; /* <-- Расстояние уменьшено в 2 раза */
-      /* Привязываем ширину к ширине фото с главного экрана */
+      margin-top: 15px; 
       width: clamp(280px, 45vw, 380px); 
     }
-/* Фиолетовый ореол под карточкой */
+
+    /* Фиолетовый ореол под карточкой */
     .about-aura {
       position: absolute;
       width: 130%; height: 130%;
@@ -247,6 +257,10 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
       top: 50%; left: 50%; transform: translate(-50%, -50%);
       z-index: 1; pointer-events: none;
       animation: auraPulse 6s ease-in-out infinite alternate;
+      /* Решает проблему лагов скролла под стеклом: */
+      will-change: transform, opacity; 
+      backface-visibility: hidden;
+      transform: translate3d(-50%, -50%, 0); 
     }
 
     /* Карточка гласморфизм */
@@ -261,6 +275,9 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
         0 30px 60px rgba(128, 127, 173, 0.15), 
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
       display: flex; flex-direction: column; gap: 24px;
+      /* Решает проблему лагов скролла: изолирует фильтр блюра на своем слое */
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     .about-photo {
@@ -295,14 +312,18 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
     @keyframes tilt2 { 0%,100% { transform: rotate(-14deg) scale(1); } 50% { transform: rotate(-7deg) scale(.98); } }
     @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); opacity:.6; } 50% { transform: translate(-10px,-18px) scale(1.2); opacity:1; } }
     @keyframes drift2 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(16px,-10px); opacity:.9; } }
-    @keyframes drift3 { 0%,100% { transform: translate(0,0); opacity:.5; } 50% { transform: translate(-12px,14px); opacity:.95; } }
+@keyframes drift3 { 0%,100% { transform: translate(0,0); opacity:.5; } 50% { transform: translate(-12px,14px); opacity:.95; } }
     @keyframes drift4 { 0%,100% { transform: translate(0,0); opacity:.55; } 50% { transform: translate(10px,-16px); opacity:1; } }
     @keyframes drift5 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-18px,8px); opacity:.85; } }
     @keyframes drift6 { 0%,100% { transform: translate(0,0); opacity:.55; } 50% { transform: translate(12px,16px); opacity:1; } }
-    @keyframes drift7 { 0%,100% { transform: translate(0,0); opacity:.
-4; } 50% { transform: translate(14px,-12px); opacity:.82; } }
+    @keyframes drift7 { 0%,100% { transform: translate(0,0); opacity:.4; } 50% { transform: translate(14px,-12px); opacity:.82; } }
     @keyframes drift8 { 0%,100% { transform: translate(0,0); opacity:.45; } 50% { transform: translate(-10px,12px); opacity:.88; } }
-    @keyframes auraPulse { 0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; } 100% { transform: translate(-50%, -50%) scale(1.08); opacity: 0.9; } }
+    
+    /* Переопределяем анимацию пульса для ореолов (добавлен translate3d для GPU) */
+    @keyframes auraPulse { 
+      0% { transform: translate3d(-50%, -50%, 0) scale(1); opacity: 0.8; } 
+      100% { transform: translate3d(-50%, -50%, 0) scale(1.08); opacity: 0.9; } 
+    }
     @keyframes centerPulse { 0% { transform: scale(1); opacity: 0.7; } 100% { transform: scale(1.15); opacity: 0.95; } }
 
     /* === МОБИЛЬНАЯ АДАПТАЦИЯ === */
@@ -386,8 +407,7 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
       <div class="subtitle">
         Проводник Света <span>~</span> Дух, который помнит себя <span>~</span> Исследователь душ <span>~</span> Считываю хроники памяти <span>~</span> архитектура 5D измерения
       </div>
-
-      <div class="actions">
+<div class="actions">
         <a href="#" class="btn btn-primary">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 2L11 13"></path>
@@ -402,7 +422,7 @@ max-width: 680px; font-family: 'Cormorant Garamond', serif; font-size: clamp(20p
               <path d="M22 2L11 13"></path>
               <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
             </svg>
-Telegram-канал
+            Telegram-канал
           </a>
           
           <a href="#services" class="btn btn-tertiary">
